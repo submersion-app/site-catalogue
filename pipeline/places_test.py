@@ -375,11 +375,11 @@ class EnglishNameTest(unittest.TestCase):
             {"FR": "France", "DE": "Germany"},
         )
 
-    def test_the_app_s_table_is_read_from_its_dart_source(self):
+    def test_the_app_s_table_is_read_from_the_contract(self):
         known = places.known_country_names()
         self.assertEqual(known["united states"], "US")
         self.assertEqual(known["french polynesia"], "PF")
-        # An alias from country_code.dart, not from the generated table.
+        # An alias the app keeps in country_code.dart, carried in the table.
         self.assertEqual(known["united states of america"], "US")
         self.assertGreater(len(known), 2000)
 

@@ -21,7 +21,6 @@ Standard library only, so the tests run in CI with no packages.
 import json
 import math
 import os
-import re
 import sys
 from collections import Counter, namedtuple
 from pathlib import Path
@@ -279,22 +278,13 @@ def preferred_country_names(answers, known: dict[str, str]) -> dict[str, str]:
 
 
 def known_country_names() -> dict[str, str]:
-    """Folded country name to ISO code, as the app resolves them: the
-    generated CLDR table plus the aliases in country_code.dart."""
-    known: dict[str, str] = {}
-    entry = re.compile(r"'((?:[^'\\]|\\.)*)':\s*'([A-Z]{2})'")
-    generated = (
-        _REPO / "lib" / "core" / "geography" / "country_names.generated.dart"
-    ).read_text(encoding="utf-8")
-    for name, code in entry.findall(generated):
-        known[name.replace("\\'", "'")] = code
-    aliases = (
-        _REPO / "lib" / "core" / "geography" / "country_code.dart"
-    ).read_text(encoding="utf-8")
-    block = aliases.split("_aliasNames = {", 1)[1].split("};", 1)[0]
-    for name, code in entry.findall(block):
-        known.setdefault(fold_country(name.replace("\\'", "'")), code)
-    return known
+    """Folded country name to ISO code, as the app resolves them. The table
+    is the contract's (contract/countries.json): taken from the app's
+    generated CLDR table and the aliases in its country_code.dart, and
+    checked against them by the app's own tests, so a name the catalogue
+    writes always resolves to its code in the app."""
+    table = json.loads((_REPO / "contract" / "countries.json").read_text(encoding="utf-8"))
+    return dict(table["names"])
 
 
 class Places:
