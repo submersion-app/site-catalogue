@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - name: Run the tests
+        run: python3.14 pipeline/run_tests.py
+      - name: Check the researched sites' evidence
+        run: python3.14 research/check.py
+      - name: Check the format contract is current
+        run: python3.14 pipeline/contract.py --check
+      - name: No em-dash or en-dash as punctuation
+        run: python3.14 pipeline/no_dashes.py
