@@ -48,6 +48,7 @@ COAST_REACH_M = 2000.0
 SHORE_M = 100.0
 PLACE_MARGIN_M = 2000.0
 COPIED_M = 15.0
+COPIED_SEARCH_M = 150.0
 BUSY_PAUSE_S = 30.0
 _last_query = [0.0]
 
@@ -181,7 +182,10 @@ def _point_of(element: dict) -> tuple[float, float] | None:
 def copied_point(lat: float, lon: float, *, overpass=query) -> CheckResult:
     """Fails when a shop, hotel, amenity or place sits on the point: a node
     within 15 m, or an outline whose centre (the point maps show) is."""
-    around = f"around:{COPIED_M:.0f},{lat},{lon}"
+    # Overpass measures `around` to a way's outline, so a point inside a
+    # large outline is missed at 15 m: ask wider, then keep what is within
+    # 15 m of each element's point (a node, or an outline's centre).
+    around = f"around:{COPIED_SEARCH_M:.0f},{lat},{lon}"
     answer = overpass(
         f"[out:json][timeout:60];"
         f"(nwr({around})[tourism];nwr({around})[amenity];"

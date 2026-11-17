@@ -95,7 +95,7 @@ class CopiedPointTest(unittest.TestCase):
             "type": "node", "id": 777, "lat": -8.23685, "lon": 115.5624,
             "tags": {"tourism": "hotel", "name": "Alam Batu"},
         }]}
-        result = mc.copied_point(-8.23685, 115.5624, overpass=_overpass({"around:15": resort}))
+        result = mc.copied_point(-8.23685, 115.5624, overpass=_overpass({"around:150": resort}))
         self.assertFalse(result.passed)
         self.assertEqual(result.osm, ["node/777"])
         self.assertIn("Alam Batu", result.detail)
@@ -107,12 +107,20 @@ class CopiedPointTest(unittest.TestCase):
             "type": "way", "id": 60550309, "center": {"lat": -8.2367536, "lon": 115.5623839},
             "tags": {"tourism": "hotel", "name": "Alam Batu Beach Bungalow Resort"},
         }]}
-        result = mc.copied_point(-8.23685, 115.5624, overpass=_overpass({"around:15": resort}))
+        result = mc.copied_point(-8.23685, 115.5624, overpass=_overpass({"around:150": resort}))
         self.assertFalse(result.passed)
         self.assertEqual(result.osm, ["way/60550309"])
 
+    def test_a_place_further_than_15_m_is_not_the_figure(self):
+        cafe = {"elements": [{
+            "type": "node", "id": 9, "lat": -8.2372, "lon": 115.5624,
+            "tags": {"amenity": "cafe"},
+        }]}
+        result = mc.copied_point(-8.23685, 115.5624, overpass=_overpass({"around:150": cafe}))
+        self.assertTrue(result.passed)
+
     def test_a_figure_with_nothing_beneath_it_passes(self):
-        result = mc.copied_point(4.1236, 118.6286, overpass=_overpass({"around:15": {"elements": []}}))
+        result = mc.copied_point(4.1236, 118.6286, overpass=_overpass({"around:150": {"elements": []}}))
         self.assertTrue(result.passed)
 
 
