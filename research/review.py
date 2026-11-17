@@ -210,8 +210,10 @@ def _entry_html(checked, domains) -> str:
     )
 
 
-def render(checked: list, domains) -> str:
-    """The review page for every checked entry."""
+def render(checked: list, domains, *, audit=()) -> str:
+    """The review page for every checked entry. The entries named in
+    [audit], a research run's sample of its auto tier, come first, for the
+    maintainer to check as carefully as any other."""
     parts = ["<!doctype html>", '<html lang="en"><head><meta charset="utf-8">',
              '<meta name="viewport" content="width=device-width, initial-scale=1">',
              f"<title>Researched sites review</title><style>{_STYLE}</style></head><body>",
@@ -219,8 +221,19 @@ def render(checked: list, domains) -> str:
     if not checked:
         parts.append("<p>No researched sites.</p></body></html>")
         return "\n".join(parts)
-    open_ = [c for c in checked if c.state == "pending" or not c.ok]
-    decided = [c for c in checked if c not in open_]
+    sampled = set(audit)
+    sample = [c for c in checked if c.id in sampled]
+    if sample:
+        noun = "entry" if len(sample) == 1 else "entries"
+        parts.append(
+            f"<h2>Sample audit ({len(sample)} auto-tier {noun}: check each as "
+            "you would any other; more than one wrong in twenty pauses the "
+            "auto tier)</h2>"
+        )
+        parts.extend(_entry_html(c, domains) for c in sample)
+    rest = [c for c in checked if c.id not in sampled]
+    open_ = [c for c in rest if c.state == "pending" or not c.ok]
+    decided = [c for c in rest if c not in open_]
     areas: dict[str, list] = {}
     for item in open_:
         areas.setdefault(str(item.entry.get("area") or "(no area)"), []).append(item)

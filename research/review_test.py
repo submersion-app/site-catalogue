@@ -52,6 +52,16 @@ class ReviewPageTest(unittest.TestCase):
         self.assertIn("name_length", page)
         self.assertIn("Not offered for approval", page)
 
+    def test_the_audit_sample_comes_first_and_once(self):
+        audited = _entry(id="research_id_sampled", name="Sampled", area="Lembeh",
+                         review={"state": "approved", "date": "2026-11-17"})
+        checked = check.check_entries([_entry(), audited], DOMAINS, today=TODAY)
+        page = review.render(checked, DOMAINS, audit=["research_id_sampled"])
+        self.assertIn("Sample audit (1 auto-tier entry", page)
+        self.assertLess(page.index("Sample audit"), page.index("Tulamben"))
+        self.assertEqual(page.count("research_id_sampled"), 1)
+        self.assertNotIn("Already decided", page)
+
     def test_a_passing_pending_entry_asks_for_a_decision(self):
         self.assertIn("Approve or reject", _page(_entry()))
 

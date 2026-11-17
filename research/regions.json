@@ -1,0 +1,610 @@
+{
+  "regions": [
+    {
+      "name": "Red Sea: Sharm el Sheikh",
+      "lat": 27.91,
+      "lon": 34.33,
+      "radius_km": 50
+    },
+    {
+      "name": "Red Sea: Hurghada",
+      "lat": 27.26,
+      "lon": 33.81,
+      "radius_km": 50
+    },
+    {
+      "name": "Red Sea: Marsa Alam",
+      "lat": 25.07,
+      "lon": 34.89,
+      "radius_km": 50
+    },
+    {
+      "name": "Red Sea: Dahab",
+      "lat": 28.5,
+      "lon": 34.51,
+      "radius_km": 50
+    },
+    {
+      "name": "Sudan: Port Sudan",
+      "lat": 19.62,
+      "lon": 37.22,
+      "radius_km": 50
+    },
+    {
+      "name": "Saudi: Jeddah",
+      "lat": 21.54,
+      "lon": 39.17,
+      "radius_km": 50
+    },
+    {
+      "name": "Jordan: Aqaba",
+      "lat": 29.45,
+      "lon": 34.98,
+      "radius_km": 50
+    },
+    {
+      "name": "Maldives: North Male",
+      "lat": 4.3,
+      "lon": 73.5,
+      "radius_km": 50
+    },
+    {
+      "name": "Maldives: Ari",
+      "lat": 3.85,
+      "lon": 72.85,
+      "radius_km": 50
+    },
+    {
+      "name": "Thailand: Koh Tao",
+      "lat": 10.09,
+      "lon": 99.84,
+      "radius_km": 50
+    },
+    {
+      "name": "Thailand: Similan",
+      "lat": 8.65,
+      "lon": 97.64,
+      "radius_km": 50
+    },
+    {
+      "name": "Thailand: Phuket",
+      "lat": 7.88,
+      "lon": 98.39,
+      "radius_km": 50
+    },
+    {
+      "name": "Indonesia: Bali Tulamben",
+      "lat": -8.27,
+      "lon": 115.59,
+      "radius_km": 50
+    },
+    {
+      "name": "Indonesia: Komodo",
+      "lat": -8.55,
+      "lon": 119.49,
+      "radius_km": 50
+    },
+    {
+      "name": "Indonesia: Raja Ampat",
+      "lat": -0.5,
+      "lon": 130.6,
+      "radius_km": 50
+    },
+    {
+      "name": "Indonesia: Lembeh",
+      "lat": 1.44,
+      "lon": 125.22,
+      "radius_km": 50
+    },
+    {
+      "name": "Indonesia: Bunaken",
+      "lat": 1.62,
+      "lon": 124.76,
+      "radius_km": 50
+    },
+    {
+      "name": "Philippines: Anilao",
+      "lat": 13.75,
+      "lon": 120.9,
+      "radius_km": 50
+    },
+    {
+      "name": "Philippines: Moalboal",
+      "lat": 9.95,
+      "lon": 123.39,
+      "radius_km": 50
+    },
+    {
+      "name": "Philippines: Coron",
+      "lat": 12.0,
+      "lon": 120.2,
+      "radius_km": 50
+    },
+    {
+      "name": "Philippines: Malapascua",
+      "lat": 11.33,
+      "lon": 124.11,
+      "radius_km": 50
+    },
+    {
+      "name": "Philippines: Dumaguete",
+      "lat": 9.3,
+      "lon": 123.31,
+      "radius_km": 50
+    },
+    {
+      "name": "Philippines: Tubbataha",
+      "lat": 8.85,
+      "lon": 119.92,
+      "radius_km": 50
+    },
+    {
+      "name": "Malaysia: Sipadan",
+      "lat": 4.11,
+      "lon": 118.63,
+      "radius_km": 50
+    },
+    {
+      "name": "Malaysia: Tioman",
+      "lat": 2.8,
+      "lon": 104.17,
+      "radius_km": 50
+    },
+    {
+      "name": "Australia: Cairns GBR",
+      "lat": -16.92,
+      "lon": 145.77,
+      "radius_km": 50
+    },
+    {
+      "name": "Australia: Port Douglas",
+      "lat": -16.48,
+      "lon": 145.47,
+      "radius_km": 50
+    },
+    {
+      "name": "Australia: Byron Bay",
+      "lat": -28.64,
+      "lon": 153.61,
+      "radius_km": 50
+    },
+    {
+      "name": "Australia: Ningaloo Exmouth",
+      "lat": -21.93,
+      "lon": 114.13,
+      "radius_km": 50
+    },
+    {
+      "name": "Australia: Melbourne Port Phillip",
+      "lat": -38.3,
+      "lon": 144.7,
+      "radius_km": 50
+    },
+    {
+      "name": "Australia: Sydney",
+      "lat": -33.85,
+      "lon": 151.25,
+      "radius_km": 50
+    },
+    {
+      "name": "Palau",
+      "lat": 7.35,
+      "lon": 134.45,
+      "radius_km": 50
+    },
+    {
+      "name": "Micronesia: Chuuk",
+      "lat": 7.42,
+      "lon": 151.78,
+      "radius_km": 50
+    },
+    {
+      "name": "Fiji: Beqa/Pacific Harbour",
+      "lat": -18.25,
+      "lon": 178.08,
+      "radius_km": 50
+    },
+    {
+      "name": "French Polynesia: Rangiroa",
+      "lat": -14.97,
+      "lon": -147.64,
+      "radius_km": 50
+    },
+    {
+      "name": "New Zealand: Poor Knights",
+      "lat": -35.47,
+      "lon": 174.73,
+      "radius_km": 50
+    },
+    {
+      "name": "Mexico: Cozumel",
+      "lat": 20.42,
+      "lon": -86.92,
+      "radius_km": 50
+    },
+    {
+      "name": "Mexico: Playa del Carmen/cenotes",
+      "lat": 20.63,
+      "lon": -87.07,
+      "radius_km": 50
+    },
+    {
+      "name": "Mexico: Tulum cenotes",
+      "lat": 20.21,
+      "lon": -87.47,
+      "radius_km": 50
+    },
+    {
+      "name": "Mexico: La Paz",
+      "lat": 24.14,
+      "lon": -110.31,
+      "radius_km": 50
+    },
+    {
+      "name": "Mexico: Socorro",
+      "lat": 18.78,
+      "lon": -110.95,
+      "radius_km": 50
+    },
+    {
+      "name": "Belize: Ambergris",
+      "lat": 17.92,
+      "lon": -87.96,
+      "radius_km": 50
+    },
+    {
+      "name": "Honduras: Roatan",
+      "lat": 16.33,
+      "lon": -86.53,
+      "radius_km": 50
+    },
+    {
+      "name": "Costa Rica: Cocos",
+      "lat": 5.53,
+      "lon": -87.06,
+      "radius_km": 50
+    },
+    {
+      "name": "Ecuador: Galapagos",
+      "lat": -0.75,
+      "lon": -90.31,
+      "radius_km": 50
+    },
+    {
+      "name": "Bonaire",
+      "lat": 12.15,
+      "lon": -68.27,
+      "radius_km": 50
+    },
+    {
+      "name": "Curacao",
+      "lat": 12.17,
+      "lon": -68.98,
+      "radius_km": 50
+    },
+    {
+      "name": "Cayman: Grand Cayman",
+      "lat": 19.32,
+      "lon": -81.25,
+      "radius_km": 50
+    },
+    {
+      "name": "Bahamas: Nassau",
+      "lat": 25.05,
+      "lon": -77.35,
+      "radius_km": 50
+    },
+    {
+      "name": "Turks and Caicos: Providenciales",
+      "lat": 21.78,
+      "lon": -72.27,
+      "radius_km": 50
+    },
+    {
+      "name": "USVI/BVI",
+      "lat": 18.4,
+      "lon": -64.7,
+      "radius_km": 50
+    },
+    {
+      "name": "Dominica",
+      "lat": 15.41,
+      "lon": -61.37,
+      "radius_km": 50
+    },
+    {
+      "name": "USA: Florida Keys Key Largo",
+      "lat": 25.09,
+      "lon": -80.44,
+      "radius_km": 50
+    },
+    {
+      "name": "USA: West Palm Beach",
+      "lat": 26.71,
+      "lon": -80.04,
+      "radius_km": 50
+    },
+    {
+      "name": "USA: Monterey",
+      "lat": 36.6,
+      "lon": -121.89,
+      "radius_km": 50
+    },
+    {
+      "name": "USA: Catalina",
+      "lat": 33.39,
+      "lon": -118.42,
+      "radius_km": 50
+    },
+    {
+      "name": "USA: Kona Hawaii",
+      "lat": 19.64,
+      "lon": -155.99,
+      "radius_km": 50
+    },
+    {
+      "name": "USA: Maui",
+      "lat": 20.8,
+      "lon": -156.5,
+      "radius_km": 50
+    },
+    {
+      "name": "USA: Puget Sound",
+      "lat": 47.6,
+      "lon": -122.4,
+      "radius_km": 50
+    },
+    {
+      "name": "USA: Florida springs (High Springs)",
+      "lat": 29.83,
+      "lon": -82.6,
+      "radius_km": 50
+    },
+    {
+      "name": "Canada: Vancouver Island",
+      "lat": 48.65,
+      "lon": -123.4,
+      "radius_km": 50
+    },
+    {
+      "name": "Egypt: Safaga",
+      "lat": 26.75,
+      "lon": 33.94,
+      "radius_km": 50
+    },
+    {
+      "name": "Malta: Gozo",
+      "lat": 36.04,
+      "lon": 14.24,
+      "radius_km": 50
+    },
+    {
+      "name": "Malta",
+      "lat": 35.9,
+      "lon": 14.45,
+      "radius_km": 50
+    },
+    {
+      "name": "Spain: Costa Brava",
+      "lat": 41.98,
+      "lon": 3.22,
+      "radius_km": 50
+    },
+    {
+      "name": "Spain: Canaries Tenerife",
+      "lat": 28.29,
+      "lon": -16.63,
+      "radius_km": 50
+    },
+    {
+      "name": "Portugal: Azores",
+      "lat": 37.74,
+      "lon": -25.67,
+      "radius_km": 50
+    },
+    {
+      "name": "Italy: Portofino",
+      "lat": 44.3,
+      "lon": 9.21,
+      "radius_km": 50
+    },
+    {
+      "name": "Croatia: Vis",
+      "lat": 43.06,
+      "lon": 16.18,
+      "radius_km": 50
+    },
+    {
+      "name": "Greece: Crete",
+      "lat": 35.34,
+      "lon": 25.13,
+      "radius_km": 50
+    },
+    {
+      "name": "France: Marseille",
+      "lat": 43.21,
+      "lon": 5.37,
+      "radius_km": 50
+    },
+    {
+      "name": "Cyprus: Larnaca Zenobia",
+      "lat": 34.9,
+      "lon": 33.65,
+      "radius_km": 50
+    },
+    {
+      "name": "Turkey: Kas",
+      "lat": 36.2,
+      "lon": 29.64,
+      "radius_km": 50
+    },
+    {
+      "name": "UK: Scapa Flow",
+      "lat": 58.9,
+      "lon": -3.1,
+      "radius_km": 50
+    },
+    {
+      "name": "UK: Plymouth",
+      "lat": 50.35,
+      "lon": -4.14,
+      "radius_km": 50
+    },
+    {
+      "name": "UK: Farne Islands",
+      "lat": 55.63,
+      "lon": -1.63,
+      "radius_km": 50
+    },
+    {
+      "name": "UK: Capernwray/inland",
+      "lat": 54.14,
+      "lon": -2.72,
+      "radius_km": 50
+    },
+    {
+      "name": "Norway: Gulen",
+      "lat": 60.97,
+      "lon": 5.05,
+      "radius_km": 50
+    },
+    {
+      "name": "Sweden: Lysekil",
+      "lat": 58.27,
+      "lon": 11.43,
+      "radius_km": 50
+    },
+    {
+      "name": "Germany: inland lakes Bavaria",
+      "lat": 47.8,
+      "lon": 12.1,
+      "radius_km": 50
+    },
+    {
+      "name": "Austria: Attersee",
+      "lat": 47.88,
+      "lon": 13.55,
+      "radius_km": 50
+    },
+    {
+      "name": "Switzerland: Lake Geneva",
+      "lat": 46.45,
+      "lon": 6.55,
+      "radius_km": 50
+    },
+    {
+      "name": "Netherlands: Zeeland",
+      "lat": 51.65,
+      "lon": 3.9,
+      "radius_km": 50
+    },
+    {
+      "name": "Iceland: Silfra",
+      "lat": 64.26,
+      "lon": -21.12,
+      "radius_km": 50
+    },
+    {
+      "name": "South Africa: Sodwana",
+      "lat": -27.54,
+      "lon": 32.68,
+      "radius_km": 50
+    },
+    {
+      "name": "South Africa: Aliwal Shoal",
+      "lat": -30.27,
+      "lon": 30.83,
+      "radius_km": 50
+    },
+    {
+      "name": "Mozambique: Tofo",
+      "lat": -23.85,
+      "lon": 35.55,
+      "radius_km": 50
+    },
+    {
+      "name": "Tanzania: Zanzibar",
+      "lat": -6.16,
+      "lon": 39.19,
+      "radius_km": 50
+    },
+    {
+      "name": "Kenya: Diani",
+      "lat": -4.31,
+      "lon": 39.59,
+      "radius_km": 50
+    },
+    {
+      "name": "Seychelles: Mahe",
+      "lat": -4.62,
+      "lon": 55.45,
+      "radius_km": 50
+    },
+    {
+      "name": "Mauritius",
+      "lat": -20.27,
+      "lon": 57.55,
+      "radius_km": 50
+    },
+    {
+      "name": "Japan: Okinawa",
+      "lat": 26.33,
+      "lon": 127.8,
+      "radius_km": 50
+    },
+    {
+      "name": "Japan: Izu",
+      "lat": 34.9,
+      "lon": 139.1,
+      "radius_km": 50
+    },
+    {
+      "name": "South Korea: Jeju",
+      "lat": 33.25,
+      "lon": 126.56,
+      "radius_km": 50
+    },
+    {
+      "name": "Taiwan: Kenting",
+      "lat": 21.95,
+      "lon": 120.75,
+      "radius_km": 50
+    },
+    {
+      "name": "Vietnam: Nha Trang",
+      "lat": 12.24,
+      "lon": 109.2,
+      "radius_km": 50
+    },
+    {
+      "name": "Sri Lanka: Trincomalee",
+      "lat": 8.57,
+      "lon": 81.23,
+      "radius_km": 50
+    },
+    {
+      "name": "India: Andaman Havelock",
+      "lat": 11.98,
+      "lon": 92.98,
+      "radius_km": 50
+    },
+    {
+      "name": "Brazil: Fernando de Noronha",
+      "lat": -3.85,
+      "lon": -32.42,
+      "radius_km": 50
+    },
+    {
+      "name": "Colombia: San Andres",
+      "lat": 12.55,
+      "lon": -81.72,
+      "radius_km": 50
+    },
+    {
+      "name": "Chile: Easter Island",
+      "lat": -27.12,
+      "lon": -109.35,
+      "radius_km": 50
+    }
+  ]
+}
