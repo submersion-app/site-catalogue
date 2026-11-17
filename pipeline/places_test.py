@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for places.py.
 
-Run: python3 scripts/site_catalogue/places_test.py
+Run: python3.14 pipeline/places_test.py
 
 A register wreck lies at sea, where a geocoder answers nothing, so the
 catalogue places its records against boundaries it holds offline. These

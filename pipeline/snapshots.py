@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Snapshots: one downloaded catalogue source, parsed, kept outside git.
 
-Each source is fetched on its own into `scripts/.site_catalogue_cache/`,
+Each source is fetched on its own into `.cache/snapshots/`,
 so a failed download costs one source and the merge runs with no network.
 A snapshot holds the source's rows under the source's own column names;
 gates and naming are applied later, by the merge, so they can change

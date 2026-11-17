@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for snapshots.py.
 
-Run: python3 scripts/site_catalogue/snapshots_test.py
+Run: python3.14 pipeline/snapshots_test.py
 
 Each catalogue source is downloaded on its own into a snapshot the merge
 reads later. These tests pin that a snapshot comes back as it was written,

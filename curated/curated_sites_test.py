@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for curated_sites.py.
 
-Run: python3 scripts/curated_sites_test.py
+Run: python3.14 pipeline/curated_sites_test.py
 
 The site catalogue is harvested from OpenStreetMap, which has gaps (no New
 Jersey ocean sites at all). Curated sites fill them, and they must survive

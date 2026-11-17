@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for src_wikidata.py.
 
-Run: python3 scripts/site_catalogue/src_wikidata_test.py
+Run: python3.14 pipeline/src_wikidata_test.py
 
 Wikidata lists a few hundred dive sites and tens of thousands of wrecks,
 most of the wrecks imported from loss registers with a position good to a

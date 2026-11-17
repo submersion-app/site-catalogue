@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Checks the evidence behind researched dive sites.
 
-    python3 scripts/site_catalogue/research/check.py [--file PATH]
+    python3.14 research/check.py [--file PATH]
         [--domains PATH] [--review OUT]
 
 A researched site ships only when its evidence meets the rules of the

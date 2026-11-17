@@ -35,8 +35,8 @@ RESEARCH_FILE = Path(_RESEARCH) / "sites.json"
 DOMAINS_FILE = Path(_RESEARCH) / "domains.json"
 SOURCE = "research"
 _REPOSITORY_FILE = (
-    "https://github.com/submersion-app/submersion/blob/main/"
-    "scripts/site_catalogue/research/sites.json"
+    "https://github.com/submersion-app/site-catalogue/blob/main/"
+    "research/sites.json"
 )
 
 # How a site type reads after an entry ("Shore dive to a wreck") and on

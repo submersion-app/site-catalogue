@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for evidence.py.
 
-Run: python3 scripts/site_catalogue/research/evidence_test.py
+Run: python3.14 research/evidence_test.py
 
 A researched site's facts are read from pages that write positions in
 several ways and to several precisions. These tests pin how a figure is

@@ -2,7 +2,7 @@
 """Curated dive sites merged into the built-in site catalogue.
 
 The catalogue's sources have gaps. `dive_sites_curated.json` fills them with
-researched sites, and `scripts/site_catalogue/merge.py` reads it on every run
+researched sites, and `pipeline/merge.py` reads it on every run
 so they survive.
 
 Each curated entry carries a site's name, description and position plus
@@ -14,7 +14,7 @@ sources.
 
 A curated site steps aside once OpenStreetMap gains a dive site of the same
 name within a kilometre, so the catalogue never lists one site twice
-(`scripts/site_catalogue/overlap.py`).
+(`pipeline/overlap.py`).
 """
 
 import json

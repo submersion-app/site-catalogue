@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for grouping.py.
 
-Run: python3 scripts/site_catalogue/grouping_test.py
+Run: python3.14 pipeline/grouping_test.py
 
 A reef program lists deployments, not sites: one reef is dozens of rows a
 few metres apart. These tests pin how rows of one name become one site,

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The page a batch of researched sites is approved from.
 
-    python3 scripts/site_catalogue/research/check.py --review OUT
+    python3.14 research/check.py --review OUT
 
 One self-contained HTML file, with no scripts and nothing fetched: per
 area, every entry waiting for a decision, each with the point that would

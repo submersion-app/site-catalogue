@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for src_research.py.
 
-Run: python3 scripts/site_catalogue/src_research_test.py
+Run: python3.14 pipeline/src_research_test.py
 
 Researched sites reach the merge from the evidence file, not from a
 download. These tests pin which entries become records (approved, sound,
@@ -155,8 +155,8 @@ class SourceRefTest(unittest.TestCase):
     def test_points_at_the_entry_in_the_repository(self):
         ref = src_research.source_ref("research_id_usat_liberty")
         self.assertTrue(ref.startswith(
-            "https://github.com/submersion-app/submersion/blob/main/"
-            "scripts/site_catalogue/research/sites.json"
+            "https://github.com/submersion-app/site-catalogue/blob/main/"
+            "research/sites.json"
         ))
         self.assertIn("research_id_usat_liberty", ref)
 

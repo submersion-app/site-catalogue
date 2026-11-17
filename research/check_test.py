@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for check.py.
 
-Run: python3 scripts/site_catalogue/research/check_test.py
+Run: python3.14 research/check_test.py
 
 A researched site ships only when its evidence meets the rules of the
 slice 3 design as the wider sources design widens them: two counting

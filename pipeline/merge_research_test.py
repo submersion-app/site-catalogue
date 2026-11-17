@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for researched sites in merge.py.
 
-Run: python3 scripts/site_catalogue/merge_research_test.py
+Run: python3.14 pipeline/merge_research_test.py
 
 Researched records join the merge from the evidence file: they rank last,
 pass no field either way, take their country from the researcher when the

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """Builds the site catalogue the app ships, from the sources' snapshots.
 
-    python3 scripts/site_catalogue/merge.py [--without KEY ...] [--out DIR]
-    python3 scripts/site_catalogue/merge.py --open-only --out DIR
+    python3.14 pipeline/merge.py [--without KEY ...] [--out DIR]
+    python3.14 pipeline/merge.py --open-only --out DIR
 
 Each source is downloaded on its own, by its own module, into the snapshot
-cache (run `python3 scripts/site_catalogue/src_ukho.py` and its siblings,
+cache (run `python3.14 pipeline/src_ukho.py` and its siblings,
 and `places.py` for the boundaries). This step then needs no network: it
 gates each source's rows, turns deployments into sites, removes the sites
 two sources both list, places every record in a country and a region, and
-writes `assets/data/site_catalogue.json` with its version sidecar.
+writes `build/catalogue/site_catalogue.json` with its version sidecar.
 
 It refuses to run when a source's snapshot is missing, unless that source
 is named with `--without`: a catalogue quietly short of a register would
@@ -18,9 +18,10 @@ look like a clean run.
 `--open-only` writes the catalogue without the own-terms sources: the
 ODbL database alone, for the ODbL offer and for anyone redistributing
 commercially. It must be told where to write (`--out`): the default is the
-catalogue the app ships, which it would replace. `--out assets/data` does
-that on purpose, and takes New Jersey's metadata away with its records.
-Maryland's metadata stays: its records are part of the ODbL database.
+full catalogue's folder, which it would replace. Writing it over the full
+catalogue on purpose also takes New Jersey's metadata away with its
+records. Maryland's metadata stays: its records are part of the ODbL
+database.
 
 It prints, per source, what was read, what each gate dropped and what was
 written, then the ids that left and joined the catalogue it replaces.

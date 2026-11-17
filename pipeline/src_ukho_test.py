@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for src_ukho.py, against real rows of the UKHO wreck file.
 
-Run: python3 scripts/site_catalogue/src_ukho_test.py
+Run: python3.14 pipeline/src_ukho_test.py
 
 The UKHO register lists every charted wreck, most of which no diver could
 or should be sent to: wrecks that dry at low water, foul ground, positions

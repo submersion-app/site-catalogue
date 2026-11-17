@@ -94,16 +94,16 @@ One area at a time.
    vocabularies. A page on a domain that is on no list fails the checker:
    add the domain to `domains.json` with its reason first. That is a
    decision a person makes once per domain.
-5. **Run the checker:** `python3 scripts/site_catalogue/research/check.py`.
+5. **Run the checker:** `python3.14 research/check.py`.
    An entry that fails is fixed or dropped, never forced.
 6. **Make the review page:**
-   `python3 scripts/site_catalogue/research/check.py --review review.html`
+   `python3.14 research/check.py --review review.html`
    (anywhere outside the repository), and hand it to the maintainer.
 7. **Write the maintainer's decision** into each entry's `review`:
    `{"state": "approved", "date": "YYYY-MM-DD"}`, or `rejected` with a
    `reason`. A rejected entry stays in the file so a later run does not
    research it again blind.
-8. **Run the merge** (`python3 scripts/site_catalogue/merge.py`). Only
+8. **Run the merge** (`python3.14 pipeline/merge.py`). Only
    approved, sound, unwithdrawn entries reach the catalogue.
 
 If an area yields fewer than 5 entries that pass, say which and why in
@@ -161,7 +161,7 @@ the batch's PR. The first wider sources batch adds no replacement areas.
 - **Depths:** each page's figure; add `"unit": "ft"` for feet. The shipped
   depth is worked out by the checker, never written by hand.
 - **entry, types:** the app's names (`shore`, `boat`, `giantStride`;
-  `reef`, `wall`, `wreck`, `muck`), as `scripts/site_catalogue_format.py`
+  `reef`, `wall`, `wreck`, `muck`), as `pipeline/site_catalogue_format.py`
   lists them.
 - **hazards:** `strong_current`, `surge`, `boat_traffic`, `overhead`,
   `entanglement`, `cold`, `low_visibility`, `permit`, `depth`.
@@ -184,7 +184,7 @@ A withdrawn record leaves the catalogue, and every later catalogue lists
 it as withdrawn. A diver whose site came from it sees on that site's page
 that it was withdrawn and why; nothing about their site changes.
 
-A curated record (`scripts/dive_sites_curated.json`) is withdrawn the same
+A curated record (`curated/dive_sites_curated.json`) is withdrawn the same
 way, by an item in `withdrawn_curated`:
 `{"id": "curated_...", "reason": ..., "date": ...}`. Its entry stays in
 the curated file: the merge refuses a withdrawal that names no curated

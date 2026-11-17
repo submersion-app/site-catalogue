@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for src_ireland.py, against real rows of the Irish inventory.
 
-Run: python3 scripts/site_catalogue/src_ireland_test.py
+Run: python3.14 pipeline/src_ireland_test.py
 
 The Wreck Inventory of Ireland says where each position came from. Some
 came from sites whose data the catalogue may not reuse (wrecksite.eu,

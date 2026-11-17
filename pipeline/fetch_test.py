@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for the sources' fetch functions.
 
-Run: python3 scripts/site_catalogue/fetch_test.py
+Run: python3.14 pipeline/fetch_test.py
 
 Each source downloads its register and writes a snapshot the merge later
 reads with no network. These tests stand in for the network and pin what a

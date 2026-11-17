@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The format of the built-in site catalogue (assets/data/site_catalogue.json).
+"""The format of the built-in site catalogue (site_catalogue.json in a release).
 
 One record per site, with where it came from and how far it is trusted. The
 app loads the file into its local cache whenever the version sidecar
@@ -55,7 +55,7 @@ SOURCES = {
         "credit": "Submersion contributors",
     },
     # Sites found by research: facts read from published sources,
-    # each one citing its pages in scripts/site_catalogue/research/. See
+    # each one citing its pages in research/. See
     # docs/design/specs/2026-11-15-site-catalogue-researched-sites-design.md.
     "research": {
         "name": "Submersion site research",

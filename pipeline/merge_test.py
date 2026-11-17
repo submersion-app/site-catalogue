@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for merge.py.
 
-Run: python3 scripts/site_catalogue/merge_test.py
+Run: python3.14 pipeline/merge_test.py
 
 The merge reads every source's snapshot and writes the catalogue the app
 ships, with no network. These tests run it on the committed sample rows

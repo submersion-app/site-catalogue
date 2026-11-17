@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for src_osm.py, against real OpenStreetMap elements.
 
-Run: python3 scripts/site_catalogue/src_osm_test.py
+Run: python3.14 pipeline/src_osm_test.py
 
 OpenStreetMap's scuba tag marks dive sites and also the shops, clubs and
 hotels that serve divers, and its wreck tags mark hulks on beaches as well

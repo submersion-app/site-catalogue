@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Unit tests for site_catalogue_format.py.
 
-Run: python3 scripts/site_catalogue_format_test.py
+Run: python3.14 pipeline/site_catalogue_format_test.py
 
-The built-in site catalogue (assets/data/site_catalogue.json) is written by
+The built-in site catalogue (site_catalogue.json in a release) is written by
 the harvester in one format the app reads back. These tests pin that format:
 the mappings from source values to names the app knows, the depth rule, and
 the version sidecar the app compares before it imports the file.

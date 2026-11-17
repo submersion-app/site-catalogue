@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for overlap.py.
 
-Run: python3 scripts/site_catalogue/overlap_test.py
+Run: python3.14 pipeline/overlap_test.py
 
 Nine sources list some of the same wrecks and reefs. These tests pin when
 two records are one site, which of them survives, what the survivor takes

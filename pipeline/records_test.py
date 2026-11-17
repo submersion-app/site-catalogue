@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for records.py.
 
-Run: python3 scripts/site_catalogue/records_test.py
+Run: python3.14 pipeline/records_test.py
 
 Every catalogue source hands the merge the same working record, and two
 sources name one wreck differently ("HMS EXETER", "Exeter (wreck)"). These

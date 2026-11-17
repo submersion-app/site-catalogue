@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Generate the country name table the app resolves site countries with.
 
-    python3 scripts/geography/generate_country_names.py
+    (the app repository runs it, as scripts/geography/generate_country_names.py;
+    this copy is here for `fold`, the lookup key the country table is built on)
 
 A dive site's country is free text: typed by the diver, imported, or filled
 by reverse geocoding, often in the local language. To put a flag beside it

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for src_reefs.py, against real rows of each reef source.
 
-Run: python3 scripts/site_catalogue/src_reefs_test.py
+Run: python3.14 pipeline/src_reefs_test.py
 
 Five sources list artificial reefs and moorings: Florida's deployments, a
 federal compilation of the other states, New Jersey's and North

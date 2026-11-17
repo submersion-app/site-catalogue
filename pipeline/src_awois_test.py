@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for src_awois.py, against real AWOIS placemarks.
 
-Run: python3 scripts/site_catalogue/src_awois_test.py
+Run: python3.14 pipeline/src_awois_test.py
 
 NOAA graded every AWOIS position, and most named wrecks are graded low.
 These tests pin the gate that keeps the well-fixed ones that are still

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for review.py.
 
-Run: python3 scripts/site_catalogue/research/review_test.py
+Run: python3.14 research/review_test.py
 
 The maintainer approves a batch of researched sites from one page. These
 tests pin that the page needs no network, groups entries by area, shows

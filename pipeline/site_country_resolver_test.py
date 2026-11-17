@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for site_country_resolver.py.
 
-Run: python3 scripts/site_country_resolver_test.py
+Run: python3.14 pipeline/site_country_resolver_test.py
 
 A catalogue site's country comes from its coordinates, not from the text
 OpenStreetMap happens to carry, and a territory with its own ISO code keeps

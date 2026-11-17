@@ -53,6 +53,12 @@ The open-only build: `python3.14 pipeline/merge.py --open-only --out build/open`
 Run the tests with `python3.14 pipeline/run_tests.py`, and the researched
 sites' checker with `python3.14 research/check.py`.
 
+## Design records
+
+The designs behind the catalogue (the `docs/design/specs/...` files the code
+comments cite) live in the app repository,
+[submersion-app/submersion](https://github.com/submersion-app/submersion/tree/main/docs/design/specs).
+
 ## Researched sites
 
 Sites the registers do not list (reefs, walls, shore dives) are researched
