@@ -1,0 +1,44 @@
+name: Release
+
+# Publishes the committed catalogue as a date-tagged release, after
+# rebuilding it from the snapshot set catalogue/SNAPSHOTS names: the release
+# stops unless the rebuild matches the committed files byte for byte. The
+# app's intake workflow finds new releases on its own (it checks weekly).
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Restore the snapshot set the catalogue was built from
+        run: python3.14 pipeline/snapshot_sets.py restore "$(cat catalogue/SNAPSHOTS)"
+
+      - name: Run the tests and the checker
+        run: |
+          python3.14 pipeline/run_tests.py
+          python3.14 research/check.py
+
+      - name: Rebuild and assemble the release
+        run: python3.14 pipeline/release.py --out build/release --notes build/release-notes.md
+
+      - name: Publish it
+        run: |
+          existing="$(gh release list --limit 500 --json tagName -q '.[].tagName')"
+          tag="$(printf '%s\n' "$existing" | python3.14 -c 'import sys, datetime; sys.path.insert(0, "pipeline"); import release; print(release.next_tag(sys.stdin.read().split(), datetime.datetime.now(datetime.UTC).date()))')"
+          gh release create "$tag" build/release/* --title "$tag" --notes-file build/release-notes.md
