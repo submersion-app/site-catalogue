@@ -1,0 +1,87 @@
+name: Refresh registers
+
+# Monthly: fetch every source, publish the snapshot set, rebuild the
+# catalogue and open a PR with it. A source that fails is reused from the
+# previous set and named in the PR. A PR opened with the built-in token
+# starts no other workflow, so this job runs the tests and the checker
+# itself before opening it.
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Name this set and find the previous one
+        id: tags
+        run: |
+          echo "tag=snapshots-$(date -u +%F)" >> "$GITHUB_OUTPUT"
+          echo "previous=$(cat catalogue/SNAPSHOTS)" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch and rebuild
+        id: refresh
+        run: |
+          set +e
+          python3.14 pipeline/refresh.py --tag "${{ steps.tags.outputs.tag }}" \
+            --previous "${{ steps.tags.outputs.previous }}" --body build/refresh-body.md
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: The merge stopped, open an issue
+        if: steps.refresh.outputs.code == '2'
+        run: |
+          gh issue create --title "Register refresh stopped (${{ steps.tags.outputs.tag }})" \
+            --body-file build/refresh-body.md
+          exit 1
+
+      - name: A source failed with no previous set
+        if: steps.refresh.outputs.code != '0' && steps.refresh.outputs.code != '2'
+        run: exit 1
+
+      - name: Run the tests and the checker
+        run: |
+          python3.14 pipeline/run_tests.py
+          python3.14 research/check.py
+
+      - name: Publish the snapshot set
+        run: |
+          python3.14 pipeline/snapshot_sets.py pack --out build/snapshots
+          gh release create "${{ steps.tags.outputs.tag }}" build/snapshots/* \
+            --title "${{ steps.tags.outputs.tag }}" \
+            --notes "Raw source downloads for the catalogue built on this date. Each file's terms are in its TERMS.txt; own-terms files are not part of the ODbL database."
+
+      - name: Open the refresh PR
+        run: |
+          branch="refresh/${{ steps.tags.outputs.tag }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add catalogue/
+          if git diff --cached --quiet; then
+            echo "The catalogue did not change."
+            exit 0
+          fi
+          git commit -m "chore: refresh the registers (${{ steps.tags.outputs.tag }})"
+          git push origin "$branch"
+          gh pr create --base main --head "$branch" \
+            --title "Refresh the registers (${{ steps.tags.outputs.tag }})" \
+            --body-file build/refresh-body.md

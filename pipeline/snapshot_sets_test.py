@@ -67,6 +67,14 @@ class PackTest(unittest.TestCase):
         self.assertIn(self.out / snapshot_sets.MANIFEST, paths)
         self.assertEqual(paths, sorted(paths))
 
+    def test_a_metadata_file_that_is_not_xml_is_refused(self):
+        # A Maryland "metadata" file once turned up as a zipped GeoPackage.
+        (self.cache / merge.MD_DNR_METADATA_FILE).write_bytes(b"PK\x03\x04 not xml")
+        with self.assertRaises(ValueError) as caught:
+            snapshot_sets.pack(self.cache, self.out)
+        self.assertIn(merge.MD_DNR_METADATA_FILE, str(caught.exception))
+        self.assertFalse(self.out.exists() and any(self.out.iterdir()))
+
     def test_a_restored_set_is_the_cache_it_was_packed_from(self):
         snapshot_sets.pack(self.cache, self.out)
         restored = Path(self._tmp.name) / "restored"

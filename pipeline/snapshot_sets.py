@@ -26,6 +26,7 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from xml.etree import ElementTree
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 for _path in (_HERE, *(os.path.join(os.path.dirname(_HERE), _d) for _d in ("pipeline", "research", "curated"))):
@@ -104,7 +105,15 @@ def terms_note(key: str) -> str:
 
 def pack(cache: Path, out: Path) -> list[Path]:
     """Copies the snapshot set in [cache] into the flat folder [out], with a
-    terms note per snapshot and the manifest. Returns the written paths."""
+    terms note per snapshot and the manifest. Returns the written paths.
+    Raises ValueError, writing nothing, when a metadata file is not XML."""
+    for name in (merge.NJDEP_METADATA_FILE, merge.MD_DNR_METADATA_FILE):
+        path = cache / name
+        if path.exists():
+            try:
+                ElementTree.parse(path)
+            except ElementTree.ParseError as error:
+                raise ValueError(f"{name} is not XML ({error}): fetch it again") from error
     out.mkdir(parents=True, exist_ok=True)
     files: dict[str, str] = {}
     keys = sorted(path.stem for path in cache.glob("*.json"))
