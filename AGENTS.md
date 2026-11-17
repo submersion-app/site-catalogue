@@ -28,6 +28,12 @@ sentences.
   database (see LICENSE-DATA.md).
 - An entry that fails `research/check.py` is fixed or dropped, never forced.
 
+## Research runs
+
+Research runs follow the skill in `.agents/skills/research-sites/`
+(`SKILL.md`, with `region-brief.md` for each region's agent and
+`second-pass.md` for the independent check).
+
 ## Working
 
 - Python 3.14, standard library only. Any network request sends
