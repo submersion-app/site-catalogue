@@ -46,7 +46,14 @@ Python 3.14, standard library only.
    own, as `python3.14 pipeline/src_ukho.py` and its siblings, and
    `python3.14 pipeline/places.py` for the boundaries), or restore a published
    snapshot set.
-2. Build: `python3.14 pipeline/merge.py`, which writes `build/catalogue/`.
+2. Build: `python3.14 pipeline/merge.py`, which rewrites `catalogue/`.
+
+`catalogue/` is committed: it is the catalogue the next release publishes,
+and `catalogue/SNAPSHOTS` names the snapshot set it was built from. To
+rebuild it exactly, restore that set
+(`python3.14 pipeline/snapshot_sets.py restore <tag>`) and run the merge.
+The merge compares against the committed catalogue and stops when a
+researched or curated record would leave it without a withdrawal.
 
 The open-only build: `python3.14 pipeline/merge.py --open-only --out build/open`.
 

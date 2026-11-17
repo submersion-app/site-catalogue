@@ -9,7 +9,7 @@ cache (run `python3.14 pipeline/src_ukho.py` and its siblings,
 and `places.py` for the boundaries). This step then needs no network: it
 gates each source's rows, turns deployments into sites, removes the sites
 two sources both list, places every record in a country and a region, and
-writes `build/catalogue/site_catalogue.json` with its version sidecar.
+writes `catalogue/site_catalogue.json` with its version sidecar.
 
 It refuses to run when a source's snapshot is missing, unless that source
 is named with `--without`: a catalogue quietly short of a register would
@@ -66,7 +66,7 @@ from site_catalogue_format import (  # noqa: E402
 from snapshots import CACHE_DIR, read_snapshot  # noqa: E402
 
 _REPO = Path(_HERE).parent
-DEFAULT_OUT = _REPO / "build" / "catalogue"
+DEFAULT_OUT = _REPO / "catalogue"
 
 # Each snapshot and the function that turns its rows into working records.
 SOURCE_STEPS = {
