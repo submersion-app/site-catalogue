@@ -1,0 +1,129 @@
+#!/usr/bin/env python3
+"""Tests for the machine checks a researched entry runs before the auto
+tier: in water, in the named place, not a copied point.
+
+The Overpass answers are small hand-built geometries, so each rule is
+pinned exactly; the module's live query is not called.
+
+Run: python3.14 research/machine_checks_test.py
+"""
+
+import os
+import sys
+import unittest
+from datetime import date
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path[:0] = [_HERE, *(os.path.join(os.path.dirname(_HERE), _d) for _d in ("pipeline", "research", "curated"))]
+
+import machine_checks as mc  # noqa: E402
+
+# A straight coastline along latitude 0, drawn west to east, so land (on
+# its left) lies to the north.
+_COAST = {"elements": [{
+    "type": "way", "id": 11, "tags": {"natural": "coastline"},
+    "geometry": [{"lat": 0.0, "lon": 0.0}, {"lat": 0.0, "lon": 0.02}],
+}]}
+_NO_COAST = {"elements": []}
+
+
+def _overpass(answers):
+    """A stand-in for the live query: the answer for the first key found
+    in the query text."""
+    def query(ql):
+        for key, answer in answers.items():
+            if key in ql:
+                return answer
+        raise AssertionError(f"unexpected query: {ql}")
+    return query
+
+
+class InWaterTest(unittest.TestCase):
+    def test_a_point_seaward_of_the_coastline_is_in_water(self):
+        result = mc.in_water(-0.005, 0.01, shore=False, overpass=_overpass({"coastline": _COAST}))
+        self.assertTrue(result.passed)
+        self.assertEqual(result.osm, ["way/11"])
+
+    def test_a_point_landward_of_the_coastline_is_not(self):
+        result = mc.in_water(0.005, 0.01, shore=False, overpass=_overpass({"coastline": _COAST}))
+        self.assertFalse(result.passed)
+
+    def test_a_shore_entry_on_the_beach_passes(self):
+        # About 55 m inland: on land, but a shore dive starts at the water.
+        result = mc.in_water(0.0005, 0.01, shore=True, overpass=_overpass({"coastline": _COAST}))
+        self.assertTrue(result.passed)
+        far = mc.in_water(0.005, 0.01, shore=True, overpass=_overpass({"coastline": _COAST}))
+        self.assertFalse(far.passed)
+
+    def test_far_from_any_coastline_the_land_polygons_decide(self):
+        sea = mc.in_water(5.0, 5.0, shore=False, overpass=_overpass({"coastline": _NO_COAST}),
+                          on_land=lambda lat, lon: False)
+        self.assertTrue(sea.passed)
+        inland = mc.in_water(5.0, 5.0, shore=False, overpass=_overpass({"coastline": _NO_COAST}),
+                             on_land=lambda lat, lon: True)
+        self.assertFalse(inland.passed)
+
+
+class InPlaceTest(unittest.TestCase):
+    _ISLAND = {"elements": [{
+        "type": "way", "id": 96698692,
+        "bounds": {"minlat": 4.112, "minlon": 118.627, "maxlat": 4.1176, "maxlon": 118.6307},
+    }]}
+
+    def test_a_point_within_two_km_of_the_place_passes(self):
+        result = mc.in_place(4.1236, 118.6286, "way/96698692", overpass=_overpass({"way(96698692)": self._ISLAND}))
+        self.assertTrue(result.passed)
+        self.assertEqual(result.osm, ["way/96698692"])
+
+    def test_a_point_far_from_the_place_fails(self):
+        result = mc.in_place(1.45, 125.23, "way/96698692", overpass=_overpass({"way(96698692)": self._ISLAND}))
+        self.assertFalse(result.passed)
+
+    def test_a_node_place_is_a_point_with_the_margin(self):
+        node = {"elements": [{"type": "node", "id": 5, "lat": 1.0, "lon": 1.0}]}
+        self.assertTrue(mc.in_place(1.01, 1.0, "node/5", overpass=_overpass({"node(5)": node})).passed)
+        self.assertFalse(mc.in_place(1.05, 1.0, "node/5", overpass=_overpass({"node(5)": node})).passed)
+
+    def test_a_missing_feature_fails(self):
+        result = mc.in_place(1.0, 1.0, "relation/9", overpass=_overpass({"relation(9)": {"elements": []}}))
+        self.assertFalse(result.passed)
+
+
+class CopiedPointTest(unittest.TestCase):
+    def test_a_figure_on_a_resort_node_is_flagged(self):
+        resort = {"elements": [{
+            "type": "node", "id": 777, "lat": -8.23685, "lon": 115.5624,
+            "tags": {"tourism": "hotel", "name": "Alam Batu"},
+        }]}
+        result = mc.copied_point(-8.23685, 115.5624, overpass=_overpass({"around:15": resort}))
+        self.assertFalse(result.passed)
+        self.assertEqual(result.osm, ["node/777"])
+        self.assertIn("Alam Batu", result.detail)
+
+    def test_a_figure_on_a_resort_outline_is_flagged(self):
+        # Alam Batu's resort is mapped as a building outline: its centre is
+        # about 10 m from the published figure.
+        resort = {"elements": [{
+            "type": "way", "id": 60550309, "center": {"lat": -8.2367536, "lon": 115.5623839},
+            "tags": {"tourism": "hotel", "name": "Alam Batu Beach Bungalow Resort"},
+        }]}
+        result = mc.copied_point(-8.23685, 115.5624, overpass=_overpass({"around:15": resort}))
+        self.assertFalse(result.passed)
+        self.assertEqual(result.osm, ["way/60550309"])
+
+    def test_a_figure_with_nothing_beneath_it_passes(self):
+        result = mc.copied_point(4.1236, 118.6286, overpass=_overpass({"around:15": {"elements": []}}))
+        self.assertTrue(result.passed)
+
+
+class FactTest(unittest.TestCase):
+    def test_a_result_is_recorded_in_the_checks_shape(self):
+        result = mc.CheckResult("in_water", True, ["way/11"], "seaward of the coastline")
+        self.assertEqual(
+            mc.as_fact(result, date(2026, 11, 17)),
+            {"name": "in_water", "passed": True, "date": "2026-11-17", "osm": ["way/11"]},
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()
