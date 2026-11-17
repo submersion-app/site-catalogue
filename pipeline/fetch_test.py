@@ -228,11 +228,15 @@ class ReefFetchTest(unittest.TestCase):
 
     def test_the_federal_file_is_read_out_of_its_geopackage(self):
         written = _Written()
+        # Maryland's metadata is saved by the same fetch; a stand-in keeps
+        # this test's fake download out of the real snapshot cache.
         with mock.patch.object(
             src_reefs, "http_get",
             return_value=self._geopackage(src_reefs.FEDERAL_FIELDS),
-        ), mock.patch.object(src_reefs, "write_snapshot", written):
+        ), mock.patch.object(src_reefs, "write_snapshot", written), \
+                mock.patch.object(src_reefs, "save_md_dnr_metadata") as saved:
             src_reefs.fetch_federal()
+        saved.assert_called_once_with()
         self.assertEqual(
             written.snapshots["noaa_reefs"],
             [{field: f"value of {field}" for field in src_reefs.FEDERAL_FIELDS}],
@@ -245,7 +249,8 @@ class ReefFetchTest(unittest.TestCase):
         written = _Written()
         with mock.patch.object(
             src_reefs, "http_get", return_value=self._geopackage(columns)
-        ), mock.patch.object(src_reefs, "write_snapshot", written):
+        ), mock.patch.object(src_reefs, "write_snapshot", written), \
+                mock.patch.object(src_reefs, "save_md_dnr_metadata"):
             with self.assertRaises(sqlite3.OperationalError) as raised:
                 src_reefs.fetch_federal()
         self.assertIn("reefName", str(raised.exception))
