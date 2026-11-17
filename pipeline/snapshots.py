@@ -18,7 +18,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-CACHE_DIR = Path(__file__).resolve().parent.parent / ".site_catalogue_cache"
+CACHE_DIR = Path(__file__).resolve().parent.parent / ".cache" / "snapshots"
 
 USER_AGENT = "dive-site-harvester/1.0"
 

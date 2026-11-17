@@ -40,7 +40,7 @@ from pathlib import Path
 from typing import NamedTuple
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
-for _path in (_HERE, os.path.dirname(_HERE)):
+for _path in (_HERE, *(os.path.join(os.path.dirname(_HERE), _d) for _d in ("pipeline", "research", "curated"))):
     if _path not in sys.path:
         sys.path.insert(0, _path)
 
@@ -64,8 +64,8 @@ from site_catalogue_format import (  # noqa: E402
 )
 from snapshots import CACHE_DIR, read_snapshot  # noqa: E402
 
-_REPO = Path(_HERE).parent.parent
-DEFAULT_OUT = _REPO / "assets" / "data"
+_REPO = Path(_HERE).parent
+DEFAULT_OUT = _REPO / "build" / "catalogue"
 
 # Each snapshot and the function that turns its rows into working records.
 SOURCE_STEPS = {

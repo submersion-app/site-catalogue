@@ -22,7 +22,7 @@ from unittest import mock
 from pathlib import Path
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path[:0] = [_HERE, os.path.dirname(_HERE)]
+sys.path[:0] = [_HERE, *(os.path.join(os.path.dirname(_HERE), _d) for _d in ("pipeline", "research", "curated"))]
 
 import merge  # noqa: E402
 import site_catalogue_format as fmt  # noqa: E402
@@ -619,7 +619,7 @@ class MainTest(unittest.TestCase):
         # The README tells a commercial redistributor how to build the
         # catalogue without the own-terms sources: the command it gives
         # must name where to write, or the merge refuses it.
-        readme = (Path(_HERE).parent.parent / "README.md").read_text("utf-8")
+        readme = (Path(_HERE).parent / "README.md").read_text("utf-8")
         commands = [
             command
             for command in re.findall(r"`([^`]*)`", readme)

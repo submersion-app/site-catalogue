@@ -14,7 +14,7 @@ import sys
 import unittest
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path[:0] = [_HERE, os.path.dirname(_HERE)]
+sys.path[:0] = [_HERE, *(os.path.join(os.path.dirname(_HERE), _d) for _d in ("pipeline", "research", "curated"))]
 
 import src_wikidata  # noqa: E402
 

@@ -22,7 +22,7 @@ from datetime import date
 from pathlib import Path
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
-_RESEARCH = os.path.join(_HERE, "research")
+_RESEARCH = os.path.join(os.path.dirname(_HERE), "research")
 for _path in (_HERE, _RESEARCH, os.path.dirname(_HERE)):
     if _path not in sys.path:
         sys.path.insert(0, _path)

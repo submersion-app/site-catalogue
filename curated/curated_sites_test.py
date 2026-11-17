@@ -10,7 +10,6 @@ every harvest without duplicating a site OpenStreetMap later gains.
 
 import ast
 import importlib.util
-import json
 import os
 import unittest
 
@@ -22,7 +21,6 @@ _spec = importlib.util.spec_from_file_location(
 curated_sites = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(curated_sites)
 
-_CATALOGUE = os.path.join(_HERE, "..", "assets", "data", "site_catalogue.json")
 
 
 def _curated(**overrides):
@@ -78,25 +76,10 @@ class ShippedDataTest(unittest.TestCase):
         self.assertGreater(len(curated), 0)
         self.assertEqual(curated_sites.validate(curated), [])
 
-    def test_the_bundled_catalogue_carries_every_curated_site(self):
-        with open(_CATALOGUE, encoding="utf-8") as f:
-            bundled = {s["id"]: s for s in json.load(f)["sites"]}
-
-        for entry in curated_sites.load_curated():
-            self.assertIn(entry["id"], bundled)
-            site = bundled[entry["id"]]
-            self.assertEqual(site["name"], entry["name"])
-            self.assertEqual(site["lat"], entry["latitude"])
-            self.assertEqual(site["lon"], entry["longitude"])
-            self.assertEqual(site["description"], entry["description"])
-            self.assertEqual(site["source"], "curated")
-            self.assertEqual(site["source_ref"], entry["source"])
-            self.assertEqual(site["max_depth_m"], entry["depthM"])
-
     def test_the_merge_reads_the_curated_file(self):
         # Curated sites survive every harvest because the merge loads this
-        # file on every run (scripts/site_catalogue/merge.py).
-        path = os.path.join(_HERE, "site_catalogue", "merge.py")
+        # file on every run (pipeline/merge.py).
+        path = os.path.join(os.path.dirname(_HERE), "pipeline", "merge.py")
         with open(path, encoding="utf-8") as f:
             tree = ast.parse(f.read())
         calls = [

@@ -23,7 +23,7 @@ from pathlib import Path
 from unittest import mock
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path[:0] = [_HERE, os.path.dirname(_HERE)]
+sys.path[:0] = [_HERE, *(os.path.join(os.path.dirname(_HERE), _d) for _d in ("pipeline", "research", "curated"))]
 
 import places  # noqa: E402
 import src_awois  # noqa: E402

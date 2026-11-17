@@ -23,9 +23,9 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
-_CATALOGUE = os.path.dirname(_HERE)
-if _CATALOGUE not in sys.path:
-    sys.path.insert(0, _CATALOGUE)
+for _path in (*(os.path.join(os.path.dirname(_HERE), _d) for _d in ("pipeline", "research", "curated")),):
+    if _path not in sys.path:
+        sys.path.insert(0, _path)
 
 from records import km  # noqa: E402
 

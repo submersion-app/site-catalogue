@@ -27,8 +27,7 @@ from collections import Counter, namedtuple
 from pathlib import Path
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
-_SCRIPTS = os.path.dirname(_HERE)
-for _path in (_HERE, _SCRIPTS, os.path.join(_SCRIPTS, "geography")):
+for _path in (_HERE, *(os.path.join(os.path.dirname(_HERE), _d) for _d in ("pipeline", "research", "curated"))):
     if _path not in sys.path:
         sys.path.insert(0, _path)
 
@@ -40,7 +39,7 @@ from site_country_resolver import (  # noqa: E402
 )
 from snapshots import CACHE_DIR, http_get  # noqa: E402
 
-_REPO = Path(_SCRIPTS).parent
+_REPO = Path(_HERE).parent
 
 NATURAL_EARTH_URL = (
     "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/"

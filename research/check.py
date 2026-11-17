@@ -31,8 +31,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
-_CATALOGUE = os.path.dirname(_HERE)
-for _path in (_HERE, _CATALOGUE, os.path.dirname(_CATALOGUE)):
+for _path in (_HERE, *(os.path.join(os.path.dirname(_HERE), _d) for _d in ("pipeline", "research", "curated"))):
     if _path not in sys.path:
         sys.path.insert(0, _path)
 
