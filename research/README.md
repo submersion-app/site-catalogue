@@ -63,6 +63,36 @@ widened by `docs/design/specs/2026-11-16-site-catalogue-wider-sources-design.md`
   paraphrase. The record's description is one line the merge writes from
   its own fields; hazards are fixed sentences of ours.
 
+## Domains
+
+`domains.json` has three lists. A counting domain is
+`{"kind": ..., "reason": ...}`; its kind is one of `official` (park,
+reserve, government, heritage or harbour body), `operator` (a dive
+operator, resort, liveaboard or charter), `press`, `club` or `other`,
+set by the maintainer when the domain is ruled. A cite-only or never
+domain is a reason alone.
+
+## The auto tier
+
+An entry may be approved without the maintainer reading it
+(`"review": {"state": "approved", "date": ..., "by": "auto"}`) only when
+`auto_tier.py` allows it, and the checker refuses one it does not:
+
+- its position is confirmed by two stated figures, or stated by one fine
+  figure on an `official` or `operator` domain (never a map reading);
+- a second, independent pass re-read every cited page and agreed with
+  every fact: `"second_pass": {"date": ..., "agrees": true, "facts": <hash>}`,
+  where the hash is `auto_tier.facts_hash(entry)`, so editing a fact
+  afterwards voids it (the note, the review and the checks may change);
+- the machine checks ran and passed: `"checks"` holds one
+  `{"name", "passed", "date", "osm"}` for each of `in_water`, `in_place`
+  (against the feature `named.osm` names, as `node/<id>`, `way/<id>` or
+  `relation/<id>`) and `copied_point`;
+- no other standing entry lies within 500 m.
+
+Everything else that passes the checker comes to the maintainer entry by
+entry (`"by": "maintainer"`, the default when `by` is absent).
+
 ## A research run
 
 One area at a time.

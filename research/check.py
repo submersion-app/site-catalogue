@@ -35,6 +35,7 @@ for _path in (_HERE, *(os.path.join(os.path.dirname(_HERE), _d) for _d in ("pipe
     if _path not in sys.path:
         sys.path.insert(0, _path)
 
+import auto_tier  # noqa: E402
 import evidence  # noqa: E402
 from site_catalogue_format import (  # noqa: E402
     ENTRY_METHODS,
@@ -67,7 +68,7 @@ NAME_MAX = 60
 ENTRY_FIELDS = frozenset({
     "id", "name", "area", "country_code", "named", "position", "max_depth_m",
     "min_depth_m", "entry", "types", "hazards", "review", "withdrawn", "note",
-    "distinct_from",
+    "distinct_from", "second_pass", "checks",
 })
 SOURCE_FIELDS = frozenset({
     "url", "read", "lat", "lon", "value", "unit", "contradicts", "archive",
@@ -81,13 +82,14 @@ FACTS = {
 # The fields each fact may hold: its sources and what they say, never a
 # page's words.
 FACT_FIELDS = {
-    "named": frozenset({"place", "sources"}),
+    "named": frozenset({"place", "sources", "osm"}),
     "position": frozenset({"lat", "lon", "sources"}),
     "max_depth_m": frozenset({"sources"}),
     "min_depth_m": frozenset({"sources"}),
     **{key: frozenset({"value", "sources"}) for key in FACTS},
 }
 REVIEW_STATES = ("pending", "approved", "rejected")
+REVIEWERS = ("auto", "maintainer")
 _COUNTRY = re.compile(r"^[A-Z]{2}$")
 
 
@@ -226,6 +228,35 @@ def _check_shape(checked: CheckedEntry, ids: set[str], today: date) -> None:
         checked.fail("shape", "a review decision carries its date")
     elif review["state"] == "rejected" and not review.get("reason"):
         checked.fail("shape", "a rejection carries its reason")
+    elif review.get("by", "maintainer") not in REVIEWERS:
+        checked.fail("shape", f"review.by is one of {REVIEWERS}")
+    second_pass = entry.get("second_pass")
+    if second_pass is not None and not (
+        isinstance(second_pass, dict)
+        and is_iso_date(second_pass.get("date"))
+        and isinstance(second_pass.get("agrees"), bool)
+        and isinstance(second_pass.get("facts"), str)
+    ):
+        checked.fail("shape", "second_pass holds its date, agrees and facts")
+    checks = entry.get("checks")
+    if checks is not None and not (
+        isinstance(checks, list)
+        and all(
+            isinstance(c, dict)
+            and c.get("name") in auto_tier.CHECK_NAMES
+            and isinstance(c.get("passed"), bool)
+            and is_iso_date(c.get("date"))
+            and isinstance(c.get("osm", []), list)
+            for c in checks
+        )
+    ):
+        checked.fail("shape", f"each check names one of {auto_tier.CHECK_NAMES}, passed and date")
+    osm = (entry.get("named") or {}).get("osm") if isinstance(entry.get("named"), dict) else None
+    if osm is not None and not (
+        isinstance(osm, str) and osm.split("/")[0] in ("node", "way", "relation")
+        and osm.partition("/")[2].isdigit()
+    ):
+        checked.fail("shape", "named.osm is node/<id>, way/<id> or relation/<id>")
     withdrawn = entry.get("withdrawn")
     if withdrawn is not None:
         if not isinstance(withdrawn, dict) or withdrawn.get(
@@ -463,7 +494,27 @@ def check_entries(entries, domains, *, today: date) -> list[CheckedEntry]:
         _check_facts(checked, domains)
         results.append(checked)
     _check_neighbours(results)
+    _check_auto_tier(results, domains)
     return results
+
+
+def _check_auto_tier(results: list[CheckedEntry], domains) -> None:
+    """An entry approved by the auto tier must meet it (auto_tier.py)."""
+    standing = [
+        r for r in results
+        if r.position and not r.withdrawn and r.state != "rejected"
+    ]
+    for checked in results:
+        review = checked.entry.get("review")
+        if not (isinstance(review, dict) and review.get("by") == "auto"):
+            continue
+        near = [
+            other.id for other in standing
+            if other is not checked and checked.position
+            and evidence.metres_between(*checked.position, *other.position) <= FLAG_M
+        ]
+        for problem in auto_tier.auto_tier_problems(checked, domains, near=near):
+            checked.fail("auto_tier", problem)
 
 
 def _distinct(a: CheckedEntry, b: CheckedEntry) -> bool:

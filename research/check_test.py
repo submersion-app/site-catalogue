@@ -633,7 +633,7 @@ class MainTest(unittest.TestCase):
             }), encoding="utf-8")
             domains = Path(tmp) / "domains.json"
             domains.write_text(json.dumps({
-                "counting": DOMAINS.counting,
+                "counting": {d: {"kind": "operator", "reason": r} for d, r in DOMAINS.counting.items()},
                 "cite_only": DOMAINS.cite_only,
                 "never": DOMAINS.never,
             }), encoding="utf-8")
@@ -667,7 +667,8 @@ class MainTest(unittest.TestCase):
             sites.write_text(json.dumps({"sites": [_entry()]}), encoding="utf-8")
             domains = Path(tmp) / "domains.json"
             domains.write_text(json.dumps({
-                "counting": DOMAINS.counting, "cite_only": DOMAINS.cite_only,
+                "counting": {d: {"kind": "operator", "reason": r} for d, r in DOMAINS.counting.items()},
+                "cite_only": DOMAINS.cite_only,
                 "never": DOMAINS.never,
             }), encoding="utf-8")
             with redirect_stdout(io.StringIO()) as printed:

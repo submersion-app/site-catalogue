@@ -31,6 +31,10 @@ from records import km  # noqa: E402
 
 LISTS = ("counting", "cite_only", "never")
 
+# What a counting domain is, set by the maintainer when it is ruled. Only an
+# official or operator page's stated position can place an auto-tier entry.
+DOMAIN_KINDS = ("official", "operator", "press", "club", "other")
+
 # The hazards a researched record may carry, in the order they are
 # written, each as the sentence the catalogue holds.
 HAZARD_SENTENCES = {
@@ -151,6 +155,8 @@ class DomainLists:
     counting: dict = field(default_factory=dict)
     cite_only: dict = field(default_factory=dict)
     never: dict = field(default_factory=dict)
+    # Each counting domain's kind (DOMAIN_KINDS), set when it is ruled.
+    kinds: dict = field(default_factory=dict)
 
     def kind_of(self, url: str) -> str | None:
         """Which list a page's domain is on, or None when it is on none.
@@ -162,6 +168,15 @@ class DomainLists:
                     return name
         return None
 
+    def kind_for(self, url: str) -> str | None:
+        """The kind of a counting page's domain, or None for a page that
+        does not count or a domain ruled without one."""
+        host = (urlparse(url).hostname or "").lower()
+        for domain in self.counting:
+            if host == domain or host.endswith("." + domain):
+                return self.kinds.get(domain)
+        return None
+
 
 def _domain_key(domain: str) -> str:
     """A list's domain as hosts are compared: lower case, without `www.`."""
@@ -171,18 +186,27 @@ def _domain_key(domain: str) -> str:
 
 def load_domains(path: Path) -> DomainLists:
     """The domain lists in [path], each domain in lower case without
-    `www.`. Raises ValueError when a domain is on two lists."""
+    `www.`. A counting domain is `{"kind": ..., "reason": ...}` with a kind
+    from DOMAIN_KINDS; the others are a reason. Raises ValueError when a
+    domain is on two lists, or a counting domain has no valid kind."""
     data = json.loads(Path(path).read_text(encoding="utf-8"))
     lists: dict[str, dict] = {name: {} for name in LISTS}
+    kinds: dict[str, str] = {}
     seen: dict[str, str] = {}
     for name in LISTS:
-        for domain, reason in (data.get(name) or {}).items():
+        for domain, ruling in (data.get(name) or {}).items():
             key = _domain_key(domain)
             if key in seen:
                 raise ValueError(f"{key} is on both {seen[key]} and {name}")
             seen[key] = name
-            lists[name][key] = reason
-    return DomainLists(**lists)
+            if name == "counting":
+                kind = ruling.get("kind") if isinstance(ruling, dict) else None
+                if kind not in DOMAIN_KINDS:
+                    raise ValueError(f"{key}: a counting domain's kind is one of {DOMAIN_KINDS}")
+                kinds[key] = kind
+                ruling = ruling.get("reason", "")
+            lists[name][key] = ruling
+    return DomainLists(**lists, kinds=kinds)
 
 
 def metres_between(lat1: float, lon1: float, lat2: float, lon2: float) -> float:

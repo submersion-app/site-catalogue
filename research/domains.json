@@ -1,28 +1,97 @@
 {
   "counting": {
-    "ameddivecenter.com": "first-hand: Amed Dive Center, boat and shore dives on the Tulamben coast; terms: none found, bare copyright line",
-    "amedjepundivers.com": "first-hand: Amed Jepun Divers, guides Tulamben and Kubu dives; terms: none found, bare copyright line",
-    "balidiving.co": "first-hand: Pebble & Fins dive resort, guides Tulamben and Kubu dives; terms: none found, bare copyright line",
-    "berwickshiremarinereserve.org.uk": "official: Berwickshire Marine Reserve, the charity that runs the St Abbs and Eyemouth voluntary marine reserve; terms: none found, no copyright notice beyond photo credits",
-    "bsac.com": "club write-up: British Sub-Aqua Club blog piece by a member who dived the site; terms: website disclaimer covers accuracy only, bare copyright line",
-    "divernet.com": "dive press: Diver magazine wreck tours and trip reports; terms: no terms of use, footer all-rights-reserved line and a fair-use disclaimer (maintainer: counting, 2026-11-16)",
-    "freedivers.co.uk": "first-hand: Freedivers UK freediving school trip report; terms: T&Cs cover course bookings only, footer copyright line with 'All Rights Reserved'",
-    "idive.org.uk": "first-hand: Ipswich Dive Club (BSAC) trip reports; terms: none found, footer copyright line with 'All rights reserved'",
-    "indopacificimages.com": "dive press: photographer and author Don Silcock's dive guides; terms: none found, footer copyright line ('All Rights Reserved', no reuse clause)",
-    "jncc.gov.uk": "official: Joint Nature Conservation Committee survey station records (MNCR/MBNE diver surveys); terms: Open Government Licence v3 per the data.gov.uk dataset page",
-    "juergenfreund.com": "first-hand: Tubbataha dive logs (2009) by a marine photographer who dived these sites, one with a GPS fix; terms: none found, bare copyright line in footer",
-    "lembehresort.com": "first-hand: Lembeh Island dive resort that runs these dives; its own interactive site map and per-site pages; terms page covers bookings only, footer is a bare all-rights-reserved line",
-    "marinequest.co.uk": "first-hand: Marine Quest, Eyemouth dive charter that runs these dives; terms: booking terms only, bare copyright line",
-    "masterliveaboards.com": "first-hand: Master Liveaboards runs Philippine Siren trips in Tubbataha; its itinerary PDF describes the sites and carries the park's dive site and mooring map; terms: booking conditions only, bare copyright line",
-    "scuba-junkie.com": "first-hand: Mabul-based dive operator running Sipadan, Mabul and Kapalai dives; terms: none found, bare all-rights-reserved copyright line",
-    "seadoors-liveaboard.com": "first-hand: Seadoors liveaboard runs Tubbataha trips and names the sites it dives; terms: booking and affiliate conditions only, bare copyright line",
-    "seaventuresdive.com": "first-hand: Seaventures dive rig operator off Mabul, runs Sipadan dives; terms: none found, bare all-rights-reserved copyright line",
-    "stabbsdiving.com": "first-hand: St Abbs Diving (Pathfinder), St Abbs dive charter; terms: booking terms only, bare copyright line",
-    "tulamben.com": "first-hand: Tauch Terminal Resort, Tulamben dive operator; terms: booking terms only, bare copyright line",
-    "tulambenwreckdivers.com": "first-hand: Tulamben Wreck Divers, Tulamben shore dive operator; terms: booking terms only, no reuse clause, bare copyright line",
-    "twofishdivers.com": "first-hand: dive operator with a resort on Lembeh Island; names its sites in text and on its own dive site map image; no terms page, only a privacy and cookies PDF and a bare copyright line",
-    "tynesidebsac.co.uk": "first-hand: BSAC Tyneside 114 club dive logs from Seahouses; terms: none found, bare copyright line in footer",
-    "xray-mag.com": "dive press: X-Ray Mag travel feature on St Abbs and Eyemouth by a photographer who dives there; terms: about and trading-terms pages put no limit on reuse, bare copyright line"
+    "ameddivecenter.com": {
+      "kind": "operator",
+      "reason": "first-hand: Amed Dive Center, boat and shore dives on the Tulamben coast; terms: none found, bare copyright line"
+    },
+    "amedjepundivers.com": {
+      "kind": "operator",
+      "reason": "first-hand: Amed Jepun Divers, guides Tulamben and Kubu dives; terms: none found, bare copyright line"
+    },
+    "balidiving.co": {
+      "kind": "operator",
+      "reason": "first-hand: Pebble & Fins dive resort, guides Tulamben and Kubu dives; terms: none found, bare copyright line"
+    },
+    "berwickshiremarinereserve.org.uk": {
+      "kind": "official",
+      "reason": "official: Berwickshire Marine Reserve, the charity that runs the St Abbs and Eyemouth voluntary marine reserve; terms: none found, no copyright notice beyond photo credits"
+    },
+    "bsac.com": {
+      "kind": "club",
+      "reason": "club write-up: British Sub-Aqua Club blog piece by a member who dived the site; terms: website disclaimer covers accuracy only, bare copyright line"
+    },
+    "divernet.com": {
+      "kind": "press",
+      "reason": "dive press: Diver magazine wreck tours and trip reports; terms: no terms of use, footer all-rights-reserved line and a fair-use disclaimer (maintainer: counting, 2026-11-16)"
+    },
+    "freedivers.co.uk": {
+      "kind": "club",
+      "reason": "first-hand: Freedivers UK freediving school trip report; terms: T&Cs cover course bookings only, footer copyright line with 'All Rights Reserved'"
+    },
+    "idive.org.uk": {
+      "kind": "club",
+      "reason": "first-hand: Ipswich Dive Club (BSAC) trip reports; terms: none found, footer copyright line with 'All rights reserved'"
+    },
+    "indopacificimages.com": {
+      "kind": "press",
+      "reason": "dive press: photographer and author Don Silcock's dive guides; terms: none found, footer copyright line ('All Rights Reserved', no reuse clause)"
+    },
+    "jncc.gov.uk": {
+      "kind": "official",
+      "reason": "official: Joint Nature Conservation Committee survey station records (MNCR/MBNE diver surveys); terms: Open Government Licence v3 per the data.gov.uk dataset page"
+    },
+    "juergenfreund.com": {
+      "kind": "press",
+      "reason": "first-hand: Tubbataha dive logs (2009) by a marine photographer who dived these sites, one with a GPS fix; terms: none found, bare copyright line in footer"
+    },
+    "lembehresort.com": {
+      "kind": "operator",
+      "reason": "first-hand: Lembeh Island dive resort that runs these dives; its own interactive site map and per-site pages; terms page covers bookings only, footer is a bare all-rights-reserved line"
+    },
+    "marinequest.co.uk": {
+      "kind": "operator",
+      "reason": "first-hand: Marine Quest, Eyemouth dive charter that runs these dives; terms: booking terms only, bare copyright line"
+    },
+    "masterliveaboards.com": {
+      "kind": "operator",
+      "reason": "first-hand: Master Liveaboards runs Philippine Siren trips in Tubbataha; its itinerary PDF describes the sites and carries the park's dive site and mooring map; terms: booking conditions only, bare copyright line"
+    },
+    "scuba-junkie.com": {
+      "kind": "operator",
+      "reason": "first-hand: Mabul-based dive operator running Sipadan, Mabul and Kapalai dives; terms: none found, bare all-rights-reserved copyright line"
+    },
+    "seadoors-liveaboard.com": {
+      "kind": "operator",
+      "reason": "first-hand: Seadoors liveaboard runs Tubbataha trips and names the sites it dives; terms: booking and affiliate conditions only, bare copyright line"
+    },
+    "seaventuresdive.com": {
+      "kind": "operator",
+      "reason": "first-hand: Seaventures dive rig operator off Mabul, runs Sipadan dives; terms: none found, bare all-rights-reserved copyright line"
+    },
+    "stabbsdiving.com": {
+      "kind": "operator",
+      "reason": "first-hand: St Abbs Diving (Pathfinder), St Abbs dive charter; terms: booking terms only, bare copyright line"
+    },
+    "tulamben.com": {
+      "kind": "operator",
+      "reason": "first-hand: Tauch Terminal Resort, Tulamben dive operator; terms: booking terms only, bare copyright line"
+    },
+    "tulambenwreckdivers.com": {
+      "kind": "operator",
+      "reason": "first-hand: Tulamben Wreck Divers, Tulamben shore dive operator; terms: booking terms only, no reuse clause, bare copyright line"
+    },
+    "twofishdivers.com": {
+      "kind": "operator",
+      "reason": "first-hand: dive operator with a resort on Lembeh Island; names its sites in text and on its own dive site map image; no terms page, only a privacy and cookies PDF and a bare copyright line"
+    },
+    "tynesidebsac.co.uk": {
+      "kind": "club",
+      "reason": "first-hand: BSAC Tyneside 114 club dive logs from Seahouses; terms: none found, bare copyright line in footer"
+    },
+    "xray-mag.com": {
+      "kind": "press",
+      "reason": "dive press: X-Ray Mag travel feature on St Abbs and Eyemouth by a photographer who dives there; terms: about and trading-terms pages put no limit on reuse, bare copyright line"
+    }
   },
   "cite_only": {
     "aroundus.com": "aggregator of map points; CC BY-SA 3.0, cannot join the ODbL database",

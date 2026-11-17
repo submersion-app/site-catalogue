@@ -140,7 +140,7 @@ class DomainTest(unittest.TestCase):
 
     def test_domain_lists(self):
         lists = self._lists({
-            "counting": {"tulambenwreckdivers.com": "local operator"},
+            "counting": {"tulambenwreckdivers.com": {"kind": "operator", "reason": "local operator"}},
             "cite_only": {"padi.com": "directory"},
             "never": {"wrecksite.eu": "proprietary"},
         })
@@ -153,7 +153,7 @@ class DomainTest(unittest.TestCase):
 
     def test_a_subdomain_takes_its_parent_s_list(self):
         lists = self._lists({
-            "counting": {"alertdiver.eu": "dive press"},
+            "counting": {"alertdiver.eu": {"kind": "press", "reason": "dive press"}},
             "cite_only": {},
             "never": {},
         })
@@ -162,15 +162,15 @@ class DomainTest(unittest.TestCase):
         )
 
     def test_list_keys_are_normalised(self):
-        lists = self._lists({"counting": {"WWW.DiveNet.com": "dive press"}})
+        lists = self._lists({"counting": {"WWW.DiveNet.com": {"kind": "press", "reason": "dive press"}}})
         self.assertEqual(lists.kind_of("https://divenet.com/x"), "counting")
         with self.assertRaises(ValueError):
-            self._lists({"counting": {"www.x.com": "a"}, "cite_only": {"x.com": "b"}})
+            self._lists({"counting": {"www.x.com": {"kind": "other", "reason": "a"}}, "cite_only": {"x.com": "b"}})
 
     def test_a_domain_on_two_lists_is_refused(self):
         with self.assertRaises(ValueError):
             self._lists({
-                "counting": {"padi.com": "a"},
+                "counting": {"padi.com": {"kind": "other", "reason": "a"}},
                 "cite_only": {"padi.com": "b"},
                 "never": {},
             })
