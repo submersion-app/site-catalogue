@@ -523,6 +523,17 @@ class MainTest(unittest.TestCase):
     def _doc(self):
         return json.loads((self.out / "site_catalogue.json").read_text("utf-8"))
 
+    def test_the_merge_creates_its_output_folder(self):
+        self._run()
+        fresh = Path(self._tmp.name) / "not" / "there"
+        with redirect_stdout(io.StringIO()):
+            code = merge.main(
+                ["--cache", str(self.cache), "--out", str(fresh)],
+                places=_Places(), curated=_CURATED, research=_NO_RESEARCH,
+            )
+        self.assertEqual(code, 0)
+        self.assertTrue((fresh / "site_catalogue.json").exists())
+
     def test_the_catalogue_and_its_sidecar_are_written(self):
         code, output = self._run()
         self.assertEqual(code, 0)

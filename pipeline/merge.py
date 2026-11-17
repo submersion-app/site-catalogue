@@ -549,6 +549,7 @@ def main(argv=None, *, places=None, curated=None, research=None) -> int:
         research = src_research.load_batch()
 
     old_ids = _existing_ids(arguments.out)
+    arguments.out.mkdir(parents=True, exist_ok=True)
     try:
         catalogue, report = build(
             snapshots, curated, places, research=research, previous_ids=old_ids
