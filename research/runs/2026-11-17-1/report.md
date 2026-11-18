@@ -153,3 +153,5 @@ report) are not counted.
   (counting, with the kinds proposed), added to `research/domains.json`.
   Re-split with the committed lists: 10 auto, 5 queue, none waiting; the
   same audit sample.
+- 2026-11-18: Newman's Wall approved after the re-run of its checks;
+  catalogue rebuilt from snapshots-2026-11-16 (1 new, 0 gone, 20,999).

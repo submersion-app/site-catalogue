@@ -2075,7 +2075,9 @@
       },
       "note": "Position is the Roatan Marine Park mooring for this site, from the park's own Google My Maps layer (linked as its dive site map on the park's resources page; the layer holds the park's mooring spreadsheet, with North and West columns that match the pin geometry). Park area label cocoview. A local run of the in_water check returned false here: the nearest OpenStreetMap coastline (way 1191307756) is about 330 m away, with the island's south shore at about 16.3575 N on this meridian, north of the point; the point lies on the outer reef south of the shore, so the result looks like a coastline orientation artefact. Worth a look on the map.",
       "review": {
-        "state": "pending"
+        "state": "approved",
+        "date": "2026-11-18",
+        "by": "maintainer"
       },
       "withdrawn": null,
       "checks": [
