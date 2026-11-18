@@ -2081,8 +2081,8 @@
       "checks": [
         {
           "name": "in_water",
-          "passed": false,
-          "date": "2026-11-17",
+          "passed": true,
+          "date": "2026-11-18",
           "osm": [
             "way/1191307756"
           ]
@@ -2090,7 +2090,7 @@
         {
           "name": "in_place",
           "passed": true,
-          "date": "2026-11-17",
+          "date": "2026-11-18",
           "osm": [
             "relation/5989963"
           ]
@@ -2098,7 +2098,7 @@
         {
           "name": "copied_point",
           "passed": true,
-          "date": "2026-11-17",
+          "date": "2026-11-18",
           "osm": []
         }
       ],
