@@ -34,8 +34,17 @@ jobs:
           python3.14 pipeline/run_tests.py
           python3.14 research/check.py
 
+      - name: Fetch the last release's catalogue to compare with
+        run: |
+          set -euo pipefail
+          last="$(gh release list --limit 500 --json tagName -q '[.[].tagName | select(startswith("snapshots-") | not)] | first // empty')"
+          if [ -n "$last" ]; then
+            gh release download "$last" --pattern site_catalogue.json --dir build/previous
+            echo "PREVIOUS=build/previous/site_catalogue.json" >> "$GITHUB_ENV"
+          fi
+
       - name: Rebuild and assemble the release
-        run: python3.14 pipeline/release.py --out build/release --notes build/release-notes.md
+        run: python3.14 pipeline/release.py --out build/release --notes build/release-notes.md ${PREVIOUS:+--previous "$PREVIOUS"}
 
       - name: Publish it
         run: |

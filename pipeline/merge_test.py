@@ -534,6 +534,45 @@ class MainTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertTrue((fresh / "site_catalogue.json").exists())
 
+    def test_previous_names_the_catalogue_to_compare_with(self):
+        # A release merges into an empty folder: --previous stands in for
+        # the catalogue the folder would otherwise hold.
+        self._run()
+        doc = self._doc()
+        previous = Path(self._tmp.name) / "previous.json"
+        previous.write_text(
+            json.dumps({**doc, "sites": doc["sites"][1:] + [{"id": "osm_gone"}]}),
+            encoding="utf-8",
+        )
+        fresh = Path(self._tmp.name) / "fresh"
+        output = io.StringIO()
+        with redirect_stdout(output):
+            code = merge.main(
+                ["--cache", str(self.cache), "--out", str(fresh),
+                 "--previous", str(previous)],
+                places=_Places(), curated=_CURATED, research=_NO_RESEARCH,
+            )
+        self.assertEqual(code, 0)
+        self.assertIn("Ids gone: 1", output.getvalue())
+        self.assertIn("osm_gone", output.getvalue())
+        self.assertIn("Ids new: 1", output.getvalue())
+        self.assertIn(doc["sites"][0]["id"], output.getvalue())
+
+    def test_a_missing_previous_catalogue_stops_the_merge(self):
+        self._run()
+        code, output = self._run("--previous", str(Path(self._tmp.name) / "none.json"))
+        self.assertEqual(code, 2)
+        self.assertIn("none.json", output)
+
+    def test_a_previous_catalogue_that_will_not_read_stops_the_merge(self):
+        # Read as no catalogue, it would report every id as new.
+        self._run()
+        broken = Path(self._tmp.name) / "broken.json"
+        broken.write_text('{"sites":', encoding="utf-8")
+        code, output = self._run("--previous", str(broken))
+        self.assertEqual(code, 2)
+        self.assertIn("broken.json", output)
+
     def test_the_catalogue_and_its_sidecar_are_written(self):
         code, output = self._run()
         self.assertEqual(code, 0)

@@ -14,6 +14,7 @@ import unittest
 from contextlib import redirect_stdout
 from datetime import date
 from pathlib import Path
+from unittest import mock
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path[:0] = [_HERE, *(os.path.join(os.path.dirname(_HERE), _d) for _d in ("pipeline", "research", "curated"))]
@@ -44,8 +45,60 @@ class BuildReleaseTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.out = root / "release"
 
-    def _build(self, out=None):
-        return release.build_release(self.cache, out or self.out, self.committed, **self.inputs)
+    def _build(self, out=None, **options):
+        return release.build_release(self.cache, out or self.out, self.committed, **options, **self.inputs)
+
+    def _previous(self, *, drop=0, extra=()):
+        """A previous release's catalogue: the committed one without its
+        first [drop] sites, and with [extra] ids it no longer ships."""
+        doc = json.loads((self.committed / "site_catalogue.json").read_text("utf-8"))
+        path = Path(self._tmp.name) / "previous.json"
+        path.write_text(
+            json.dumps({**doc, "sites": doc["sites"][drop:] + [{"id": i} for i in extra]}),
+            encoding="utf-8",
+        )
+        return path, [site["id"] for site in doc["sites"][:drop]]
+
+    def test_the_notes_compare_with_the_previous_release(self):
+        previous, added = self._previous(drop=1, extra=("osm_gone",))
+        report: list = []
+        self._build(previous=previous, report=report)
+        self.assertIn("Ids new: 1", report[0])
+        self.assertIn(added[0], report[0])
+        self.assertIn("Ids gone: 1", report[0])
+        self.assertIn("osm_gone", report[0])
+        self.assertNotIn("every id is new", report[0])
+
+    def test_the_first_release_has_nothing_to_compare_with(self):
+        report: list = []
+        self._build(report=report)
+        self.assertIn("every id is new", report[0])
+
+    def test_a_curated_site_gone_since_the_previous_release_stops_it(self):
+        # The departure guard runs against what the app last received.
+        previous, _ = self._previous(extra=("curated_gone",))
+        with self.assertRaises(RuntimeError) as caught:
+            self._build(previous=previous)
+        self.assertIn("curated_gone", str(caught.exception))
+        self.assertFalse((self.out / "format.json").exists())
+
+    def test_main_passes_the_previous_release_on(self):
+        previous = Path(self._tmp.name) / "previous.json"
+        notes = Path(self._tmp.name) / "notes.md"
+
+        def build(cache, out, *, report, previous):
+            report.append("Ids new: 1")
+            return []
+
+        (self.committed / "SNAPSHOTS").write_text("snapshots-2026-11-16\n", encoding="utf-8")
+        with mock.patch.object(merge, "DEFAULT_OUT", self.committed), \
+                mock.patch.object(release, "build_release", side_effect=build) as built, \
+                redirect_stdout(io.StringIO()):
+            code = release.main(["--out", str(self.out), "--notes", str(notes),
+                                 "--previous", str(previous)])
+        self.assertEqual(code, 0)
+        self.assertEqual(built.call_args.kwargs["previous"], previous)
+        self.assertIn("Ids new: 1", notes.read_text("utf-8"))
 
     def test_a_release_holds_every_file(self):
         names = [path.name for path in self._build()]
