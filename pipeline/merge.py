@@ -444,8 +444,8 @@ def _print_report(report: dict, changes: dict | None) -> None:
             print(f"  {prefix} ({len(ids)}): {listed}{more}")
 
 
-def _existing_ids(directory: Path) -> set[str] | None:
-    path = directory / CATALOGUE_FILE
+def _existing_ids(path: Path) -> set[str] | None:
+    """The ids of the catalogue file at [path], or None when there is none."""
     if not path.exists():
         return None
     try:
@@ -473,7 +473,17 @@ def main(argv=None, *, places=None, curated=None, research=None) -> int:
         help=f"where to write (default {DEFAULT_OUT}; required with --open-only)",
     )
     parser.add_argument("--cache", type=Path, default=CACHE_DIR)
+    parser.add_argument(
+        "--previous", type=Path, default=None,
+        help="the catalogue file this one replaces (default: the one in --out); "
+        "a release names the last release's",
+    )
     arguments = parser.parse_args(argv)
+    if arguments.previous is not None and (
+        not arguments.previous.is_file() or _existing_ids(arguments.previous) is None
+    ):
+        print(f"--previous names no catalogue file: {arguments.previous}")
+        return 2
     if arguments.open_only and arguments.out is None:
         # The default is the catalogue the app ships, with New Jersey's
         # metadata beside it: the ODbL extract must not replace them.
@@ -548,7 +558,7 @@ def main(argv=None, *, places=None, curated=None, research=None) -> int:
     if research is None:
         research = src_research.load_batch()
 
-    old_ids = _existing_ids(arguments.out)
+    old_ids = _existing_ids(arguments.previous or arguments.out / CATALOGUE_FILE)
     arguments.out.mkdir(parents=True, exist_ok=True)
     try:
         catalogue, report = build(

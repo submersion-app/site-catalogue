@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Catalogue releases.
 
-    python3.14 pipeline/release.py --out build/release
+    python3.14 pipeline/release.py --out build/release [--notes PATH]
+        [--previous LAST_RELEASE/site_catalogue.json]
 
 Builds the files a release publishes, from the snapshot set the committed
 catalogue names (catalogue/SNAPSHOTS), restored into the snapshot cache
@@ -60,16 +61,20 @@ def _merge(argv: list[str], inputs: dict) -> str:
 
 def build_release(
     cache: Path, out: Path, committed: Path = merge.DEFAULT_OUT, *,
-    report: list | None = None, **inputs
+    report: list | None = None, previous: Path | None = None, **inputs
 ) -> list[Path]:
     """Writes the release files into [out] and returns them in
     RELEASE_FILES order; the merge's report is appended to [report].
-    [inputs] (places, curated, research) stand in for the merge's own in
-    tests. Raises NotReproducible, writing nothing, when the rebuild differs
-    from [committed]."""
+    [previous] is the last release's catalogue: the report lists the ids
+    gone and new since it, and a researched or curated site that left it
+    without a withdrawal stops the release. [inputs] (places, curated,
+    research) stand in for the merge's own in tests. Raises
+    NotReproducible, writing nothing, when the rebuild differs from
+    [committed]."""
     with tempfile.TemporaryDirectory() as folder:
         rebuilt, open_only = Path(folder) / "full", Path(folder) / "open"
-        output = _merge(["--cache", str(cache), "--out", str(rebuilt)], inputs)
+        compared = ["--previous", str(previous)] if previous else []
+        output = _merge(["--cache", str(cache), "--out", str(rebuilt), *compared], inputs)
         if report is not None:
             report.append(output)
         differing = [
@@ -120,11 +125,15 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--notes", type=Path, default=None)
+    parser.add_argument("--previous", type=Path, default=None,
+                        help="the last release's site_catalogue.json, to compare with")
     arguments = parser.parse_args(argv)
     snapshot_tag = (merge.DEFAULT_OUT / "SNAPSHOTS").read_text("utf-8").strip()
     report: list = []
     try:
-        files = build_release(CACHE_DIR, arguments.out, report=report)
+        files = build_release(
+            CACHE_DIR, arguments.out, report=report, previous=arguments.previous
+        )
     except NotReproducible as error:
         print(error)
         return 2
