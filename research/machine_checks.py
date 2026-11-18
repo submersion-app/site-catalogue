@@ -7,9 +7,11 @@ Three checks against OpenStreetMap, asked live through Overpass:
 
 - in_water: the point is in water. Within 2 km of a coastline, the side of
   the nearest coastline segment decides (OpenStreetMap draws coastlines
-  with land on their left); further out, the offline land polygons the
-  merge places countries with decide. A shore entry passes within 100 m
-  of the coastline on either side: a shore dive starts at the water.
+  with land on their left), or, when the nearest point is a node, the
+  corner the two segments there make; further out, the offline land
+  polygons the merge places countries with decide. A shore entry passes
+  within 100 m of the coastline on either side: a shore dive starts at the
+  water.
 - in_place: the point lies within the bounds of the feature `named.osm`
   names (the island, bay or reef the pages put the site in), grown by 2 km.
 - copied_point: no shop, hotel, amenity or place node lies within 15 m of
@@ -96,23 +98,57 @@ def _local_xy(lat0: float, lon0: float, lat: float, lon: float) -> tuple[float, 
     return x, y
 
 
-def _nearest_segment(lat: float, lon: float, ways: list[dict]):
-    """(distance in metres, cross product sign, way id) of the coastline
-    segment nearest the point."""
-    best = None
+def _cross(a: tuple[float, float], b: tuple[float, float], p: tuple[float, float]) -> float:
+    """Positive when p is left of the line a->b."""
+    return (b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0])
+
+
+def _closest_on(a: tuple[float, float], b: tuple[float, float]) -> tuple[float, float]:
+    """The point of segment a->b nearest the origin: an end node itself
+    when the nearest point is one, so the segments meeting at a node agree
+    on where it is exactly."""
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    t = (-a[0] * dx - a[1] * dy) / (dx * dx + dy * dy)
+    if t <= 0.0:
+        return a
+    if t >= 1.0:
+        return b
+    return a[0] + t * dx, a[1] + t * dy
+
+
+def _nearest_coast(lat: float, lon: float, ways: list[dict]):
+    """(distance in metres, whether the point is on land, ids of the ways
+    that decided it) for the coastline nearest the point, or None when
+    [ways] has no segment.
+
+    Land is left of an OpenStreetMap coastline. When the nearest point is
+    inside a segment, that segment's side decides. When it is a node, the
+    segments into and out of the node are equally near and their lines can
+    disagree (a point off a sharp headland is left of one and right of the
+    other), so the corner decides: at a convex corner of the land the point
+    is land only when left of both, at a reflex corner when left of either.
+    """
+    segments = []
     for way in ways:
         points = [_local_xy(lat, lon, p["lat"], p["lon"]) for p in way.get("geometry") or []]
-        for (ax, ay), (bx, by) in zip(points, points[1:]):
-            dx, dy = bx - ax, by - ay
-            length2 = dx * dx + dy * dy
-            t = 0.0 if length2 == 0 else max(0.0, min(1.0, (-ax * dx - ay * dy) / length2))
-            px, py = ax + t * dx, ay + t * dy
-            distance = math.hypot(px, py)
-            # Left of a->b (cross > 0) is land on an OpenStreetMap coastline.
-            cross = dx * (0 - ay) - dy * (0 - ax)
-            if best is None or distance < best[0]:
-                best = (distance, cross, way["id"])
-    return best
+        segments += [(way["id"], a, b) for a, b in zip(points, points[1:]) if a != b]
+    if not segments:
+        return None
+    nearest = [(math.hypot(*_closest_on(a, b)), _closest_on(a, b), way_id, a, b)
+               for way_id, a, b in segments]
+    distance, point, way_id, a, b = min(nearest, key=lambda n: n[0])
+    origin = (0.0, 0.0)
+    into = next((n for n in nearest if n[0] == distance and n[4] == point), None)
+    out_of = next((n for n in nearest if n[0] == distance and n[3] == point), None)
+    if into is None or out_of is None:
+        # Inside a segment, or at the loose end of a way.
+        return distance, _cross(a, b, origin) > 0, [way_id]
+    left_into = _cross(into[3], into[4], origin) > 0
+    left_out = _cross(out_of[3], out_of[4], origin) > 0
+    # A straight run gives the same answer either way.
+    convex = _cross(into[3], point, out_of[4]) >= 0
+    land = (left_into and left_out) if convex else (left_into or left_out)
+    return distance, land, list(dict.fromkeys([into[2], out_of[2]]))
 
 
 def _default_on_land():
@@ -133,11 +169,10 @@ def in_water(lat: float, lon: float, *, shore: bool, overpass=query, on_land=Non
         f"[out:json][timeout:60];way(around:{COAST_REACH_M:.0f},{lat},{lon})[natural=coastline];out geom;"
     )
     ways = [e for e in answer.get("elements") or [] if e.get("type") == "way"]
-    nearest = _nearest_segment(lat, lon, ways)
+    nearest = _nearest_coast(lat, lon, ways)
     if nearest is not None:
-        distance, cross, way_id = nearest
-        land = cross > 0
-        osm = [f"way/{way_id}"]
+        distance, land, way_ids = nearest
+        osm = [f"way/{way_id}" for way_id in way_ids]
         if shore and distance <= SHORE_M:
             return CheckResult("in_water", True, osm, f"{distance:.0f} m from the coastline")
         side = "landward" if land else "seaward"
