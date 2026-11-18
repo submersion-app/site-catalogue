@@ -102,6 +102,12 @@ southern vertex of Fantasy Island, a closed, correctly oriented islet ring
 give opposite sides; `_nearest_segment` keeps the first, which says land.
 The failed result stays recorded, so the entry goes to the maintainer.
 
+Re-run 2026-11-18, after the vertex fix (#1) merged: Newman's Wall passes
+all three checks, `in_water` seaward of the coastline, 334 m from it. Only
+its `checks` changed, so its second pass still matches. Under the fixed
+checker it would meet every auto tier rule; it stays pending in the queue
+PR, since the tiers were split before the fix.
+
 ### Second pass
 
 One independent agent, given only the entries' facts and cited addresses.

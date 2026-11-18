@@ -1151,6 +1151,151 @@
       }
     },
     {
+      "id": "research_hn_carib_point",
+      "name": "Carib Point",
+      "area": "Roatan",
+      "country_code": "HN",
+      "named": {
+        "place": "South-east coast of Roatan at Half Moon Bay, east of Jonesville",
+        "sources": [
+          {
+            "url": "https://www.roatanmarinepark.org/resources",
+            "read": "2026-11-17"
+          },
+          {
+            "url": "https://www.cocoviewresort.com/diving/divesites/",
+            "read": "2026-11-17"
+          }
+        ],
+        "osm": "relation/5989963"
+      },
+      "position": {
+        "lat": 16.36857,
+        "lon": -86.38907,
+        "sources": [
+          {
+            "url": "https://www.roatanmarinepark.org/resources",
+            "read": "2026-11-17",
+            "lat": 16.36857,
+            "lon": -86.38907,
+            "map": "https://www.google.com/maps/d/kml?mid=1VAAlEKHNYaqEzG1-mQVxQSmVTYVjdyfA&forcekml=1"
+          }
+        ]
+      },
+      "note": "Position is the Roatan Marine Park mooring for this site, from the park's own Google My Maps layer (linked as its dive site map on the park's resources page; the layer holds the park's mooring spreadsheet, with North and West columns that match the pin geometry). Park area label Half moon bay (the south-east bay of that name, not the West End one). CoCo View mentions currents and a 30 to 40 ft plateau but no maximum, so no depth or hazard is recorded.",
+      "review": {
+        "state": "pending"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-17",
+          "osm": [
+            "way/20718768"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-17",
+          "osm": [
+            "relation/5989963"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-17",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-17",
+        "agrees": false,
+        "facts": "7b9bd54d4679b90b8249cb312edc31e33382a6e2e226e5f0df14a3d3041dfae2"
+      }
+    },
+    {
+      "id": "research_hn_cemetery_wall",
+      "name": "Cemetery Wall",
+      "area": "Roatan",
+      "country_code": "HN",
+      "named": {
+        "place": "South coast of Roatan, Barefoot Cay to Brick Bay area",
+        "sources": [
+          {
+            "url": "https://www.roatanmarinepark.org/resources",
+            "read": "2026-11-17"
+          },
+          {
+            "url": "https://sundiversroatan.com/2022/07/13/best-dive-sites-in-roatan/",
+            "read": "2026-11-17"
+          }
+        ],
+        "osm": "relation/5989963"
+      },
+      "position": {
+        "lat": 16.336566,
+        "lon": -86.471651,
+        "sources": [
+          {
+            "url": "https://www.roatanmarinepark.org/resources",
+            "read": "2026-11-17",
+            "lat": 16.336566,
+            "lon": -86.471651,
+            "map": "https://www.google.com/maps/d/kml?mid=1VAAlEKHNYaqEzG1-mQVxQSmVTYVjdyfA&forcekml=1"
+          }
+        ]
+      },
+      "types": {
+        "value": [
+          "wall"
+        ],
+        "sources": [
+          {
+            "url": "https://sundiversroatan.com/2022/07/13/best-dive-sites-in-roatan/",
+            "read": "2026-11-17"
+          }
+        ]
+      },
+      "note": "Position is the Roatan Marine Park mooring for this site, from the park's own Google My Maps layer (linked as its dive site map on the park's resources page; the layer holds the park's mooring spreadsheet, with North and West columns that match the pin geometry). Park area label barefoot; Sun Divers places it on the south side. About 340 m west of Mary's Place.",
+      "review": {
+        "state": "pending"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-17",
+          "osm": [
+            "way/155207818"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-17",
+          "osm": [
+            "relation/5989963"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-17",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-17",
+        "agrees": true,
+        "facts": "18d86be140424830caf4fca0712e5ae098334955964a16d5e19d1b0e4f10f113"
+      }
+    },
+    {
       "id": "research_hn_fish_den",
       "name": "Fish Den",
       "area": "Roatan",
@@ -1643,6 +1788,149 @@
       }
     },
     {
+      "id": "research_hn_marys_place",
+      "name": "Mary's Place",
+      "area": "Roatan",
+      "country_code": "HN",
+      "named": {
+        "place": "South coast of Roatan, Brick Bay to Barefoot Cay area east of French Harbour",
+        "sources": [
+          {
+            "url": "https://www.roatanmarinepark.org/resources",
+            "read": "2026-11-17"
+          },
+          {
+            "url": "https://www.cocoviewresort.com/diving/divesites/",
+            "read": "2026-11-17"
+          },
+          {
+            "url": "https://sundiversroatan.com/2022/07/13/best-dive-sites-in-roatan/",
+            "read": "2026-11-17"
+          },
+          {
+            "url": "https://kotosadventures.com/dive-trips/",
+            "read": "2026-11-17"
+          }
+        ],
+        "osm": "relation/5989963"
+      },
+      "position": {
+        "lat": 16.3376598,
+        "lon": -86.4685934,
+        "sources": [
+          {
+            "url": "https://www.roatanmarinepark.org/resources",
+            "read": "2026-11-17",
+            "lat": 16.3376598,
+            "lon": -86.4685934,
+            "map": "https://www.google.com/maps/d/kml?mid=1VAAlEKHNYaqEzG1-mQVxQSmVTYVjdyfA&forcekml=1"
+          }
+        ]
+      },
+      "max_depth_m": {
+        "sources": [
+          {
+            "url": "https://www.cocoviewresort.com/diving/divesites/",
+            "read": "2026-11-17",
+            "value": 120,
+            "unit": "ft"
+          },
+          {
+            "url": "https://kotosadventures.com/dive-trips/",
+            "read": "2026-11-17",
+            "value": 120,
+            "unit": "ft"
+          },
+          {
+            "url": "https://sundiversroatan.com/2022/07/13/best-dive-sites-in-roatan/",
+            "read": "2026-11-17",
+            "value": 100,
+            "unit": "ft"
+          }
+        ]
+      },
+      "min_depth_m": {
+        "sources": [
+          {
+            "url": "https://www.cocoviewresort.com/diving/divesites/",
+            "read": "2026-11-17",
+            "value": 30,
+            "unit": "ft"
+          },
+          {
+            "url": "https://kotosadventures.com/dive-trips/",
+            "read": "2026-11-17",
+            "value": 30,
+            "unit": "ft"
+          }
+        ]
+      },
+      "types": {
+        "value": [
+          "wall"
+        ],
+        "sources": [
+          {
+            "url": "https://www.cocoviewresort.com/diving/divesites/",
+            "read": "2026-11-17"
+          },
+          {
+            "url": "https://kotosadventures.com/dive-trips/",
+            "read": "2026-11-17"
+          }
+        ]
+      },
+      "hazards": {
+        "value": [
+          "depth"
+        ],
+        "sources": [
+          {
+            "url": "https://www.cocoviewresort.com/diving/divesites/",
+            "read": "2026-11-17"
+          },
+          {
+            "url": "https://sundiversroatan.com/2022/07/13/best-dive-sites-in-roatan/",
+            "read": "2026-11-17"
+          }
+        ]
+      },
+      "note": "Position is the Roatan Marine Park mooring for this site, from the park's own Google My Maps layer (linked as its dive site map on the park's resources page; the layer holds the park's mooring spreadsheet, with North and West columns that match the pin geometry). Park area label for this mooring is barefoot; KOTOS places the site off Brick Bay, CoCo View and Sun Divers on the south side. CoCo View and KOTOS give the 30 ft buoy and walls to 120 ft; Sun Divers gives the crevice to 100 ft.",
+      "review": {
+        "state": "pending"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-17",
+          "osm": [
+            "way/154929413"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-17",
+          "osm": [
+            "relation/5989963"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-17",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-17",
+        "agrees": true,
+        "facts": "b2303d69f079580872cb0a7e1044b3a739543cc26a790a54e29a5dc4d27ae559"
+      }
+    },
+    {
       "id": "research_hn_mr_bud_wreck",
       "name": "Mr. Bud Wreck",
       "area": "Roatan",
@@ -1740,6 +2028,84 @@
         "date": "2026-11-17",
         "agrees": true,
         "facts": "eb3b459636e7e3e8143839adad9d410c8eb08bd0e3610f148fb62fbf909f2cbe"
+      }
+    },
+    {
+      "id": "research_hn_newmans_wall",
+      "name": "Newman's Wall",
+      "area": "Roatan",
+      "country_code": "HN",
+      "named": {
+        "place": "South coast of Roatan by the CoCo View and French Cay channel",
+        "sources": [
+          {
+            "url": "https://www.roatanmarinepark.org/resources",
+            "read": "2026-11-17"
+          },
+          {
+            "url": "https://www.cocoviewresort.com/diving/divesites/",
+            "read": "2026-11-17"
+          }
+        ],
+        "osm": "relation/5989963"
+      },
+      "position": {
+        "lat": 16.3535771,
+        "lon": -86.4350463,
+        "sources": [
+          {
+            "url": "https://www.roatanmarinepark.org/resources",
+            "read": "2026-11-17",
+            "lat": 16.3535771,
+            "lon": -86.4350463,
+            "map": "https://www.google.com/maps/d/kml?mid=1VAAlEKHNYaqEzG1-mQVxQSmVTYVjdyfA&forcekml=1"
+          }
+        ]
+      },
+      "types": {
+        "value": [
+          "wall"
+        ],
+        "sources": [
+          {
+            "url": "https://www.cocoviewresort.com/diving/divesites/",
+            "read": "2026-11-17"
+          }
+        ]
+      },
+      "note": "Position is the Roatan Marine Park mooring for this site, from the park's own Google My Maps layer (linked as its dive site map on the park's resources page; the layer holds the park's mooring spreadsheet, with North and West columns that match the pin geometry). Park area label cocoview. A local run of the in_water check returned false here: the nearest OpenStreetMap coastline (way 1191307756) is about 330 m away, with the island's south shore at about 16.3575 N on this meridian, north of the point; the point lies on the outer reef south of the shore, so the result looks like a coastline orientation artefact. Worth a look on the map.",
+      "review": {
+        "state": "pending"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "way/1191307756"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "relation/5989963"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-17",
+        "agrees": true,
+        "facts": "3bc3442422ce9e4a0e054fa8a88f310554ed268da9ee84739cde0be20d37e259"
       }
     },
     {
@@ -1879,6 +2245,94 @@
         "date": "2026-11-17",
         "agrees": true,
         "facts": "417b235f9ddc67a9840da17a82ebfc6a94900dfd78ba3b9b1e1aaf10fbc08f44"
+      }
+    },
+    {
+      "id": "research_hn_overheat",
+      "name": "Overheat",
+      "area": "Roatan",
+      "country_code": "HN",
+      "named": {
+        "place": "Sandy Bay to West End fringing reef, north coast of Roatan, south of the El Aguila wreck",
+        "sources": [
+          {
+            "url": "https://www.roatanmarinepark.org/resources",
+            "read": "2026-11-17"
+          },
+          {
+            "url": "https://reefbuilders.com/2017/05/29/seven-dive-sites-roatan/",
+            "read": "2026-11-17"
+          },
+          {
+            "url": "https://sundiversroatan.com/roatan-diving/",
+            "read": "2026-11-17"
+          }
+        ],
+        "osm": "relation/5989963"
+      },
+      "position": {
+        "lat": 16.322426,
+        "lon": -86.583662,
+        "sources": [
+          {
+            "url": "https://www.roatanmarinepark.org/resources",
+            "read": "2026-11-17",
+            "lat": 16.3233846,
+            "lon": -86.5829402,
+            "map": "https://www.google.com/maps/d/kml?mid=1VAAlEKHNYaqEzG1-mQVxQSmVTYVjdyfA&forcekml=1"
+          },
+          {
+            "url": "https://reefbuilders.com/2017/05/29/seven-dive-sites-roatan/",
+            "read": "2026-11-17",
+            "lat": "16 19.288 N",
+            "lon": "86 35.063 W"
+          }
+        ]
+      },
+      "types": {
+        "value": [
+          "reef"
+        ],
+        "sources": [
+          {
+            "url": "https://reefbuilders.com/2017/05/29/seven-dive-sites-roatan/",
+            "read": "2026-11-17"
+          }
+        ]
+      },
+      "note": "Position is the Roatan Marine Park mooring for this site, from the park's own Google My Maps layer (linked as its dive site map on the park's resources page; the layer holds the park's mooring spreadsheet, with North and West columns that match the pin geometry). Reef Builders (Over Heat Reef) wrote 16.19.288 N, 86.35.063 W, recorded with a space for the first dot; it lies about 260 m south west of the park mooring, so the two do not confirm each other and the entry takes the map route at their mean. The park mooring is the better point if the reviewer prefers it alone.",
+      "review": {
+        "state": "pending"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-17",
+          "osm": [
+            "way/513403405"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-17",
+          "osm": [
+            "relation/5989963"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-17",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-17",
+        "agrees": true,
+        "facts": "a4adc42d658662b4d7575c2cba9ba4f6755e1988a66f6cf5e76a0dd45fbd8365"
       }
     },
     {
