@@ -91,6 +91,38 @@
     "xray-mag.com": {
       "kind": "press",
       "reason": "dive press: X-Ray Mag travel feature on St Abbs and Eyemouth by a photographer who dives there; terms: about and trading-terms pages put no limit on reuse, bare copyright line"
+    },
+    "roatanmarinepark.org": {
+      "kind": "official",
+      "reason": "Roatan Marine Park, the NGO that installs and maintains the park's dive moorings and co-manages the Bay Islands National Marine Park; its resources page links its own mooring map (Google My Maps); terms: only an app terms page with no reuse clause, bare copyright line"
+    },
+    "reefbuilders.com": {
+      "kind": "press",
+      "reason": "reef and aquarium magazine; guest writer's first-hand Roatan dive site profiles from 2017; terms: no terms page found, bare copyright line"
+    },
+    "cocoviewresort.com": {
+      "kind": "operator",
+      "reason": "CoCo View Resort, dive resort on the south coast that runs these dives; terms: none found, bare copyright line"
+    },
+    "anthonyskey.com": {
+      "kind": "operator",
+      "reason": "Anthony's Key Resort, Sandy Bay dive resort that sank and dives the Odyssey; terms: none beyond a privacy policy, all-rights-reserved footer with no reuse clause"
+    },
+    "sundiversroatan.com": {
+      "kind": "operator",
+      "reason": "Sun Divers, West End dive centre writing about its own dives; terms: none beyond a privacy policy, all-rights-reserved footer with no reuse clause"
+    },
+    "kotosadventures.com": {
+      "kind": "operator",
+      "reason": "KOTOS Adventures, West End dive centre listing its dive trips; terms: none found, all-rights-reserved footer; some site texts match Splash Inn's word for word"
+    },
+    "roatansplashinn.com": {
+      "kind": "operator",
+      "reason": "Splash Inn Dive Resort, West End dive resort listing the sites it dives; terms: none beyond a privacy policy, bare copyright line"
+    },
+    "scuba.shop": {
+      "kind": "operator",
+      "reason": "Scuba Shop, Roatan dive centre near Pristine Bay that books and guides the shark dive; terms: none found"
     }
   },
   "cite_only": {
