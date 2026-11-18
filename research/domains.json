@@ -123,6 +123,14 @@
     "scuba.shop": {
       "kind": "operator",
       "reason": "Scuba Shop, Roatan dive centre near Pristine Bay that books and guides the shark dive; terms: none found"
+    },
+    "stinapabonaire.org": {
+      "kind": "official",
+      "reason": "STINAPA Bonaire, the foundation that manages the Bonaire National Marine Park for the island government; its marine park page carries the park folder with the numbered dive site map and access table; terms page is empty, bare copyright line"
+    },
+    "beyondthecorals.com": {
+      "kind": "operator",
+      "reason": "Beyond the Corals, Bachelor's Beach dive centre that guides boat and shore dives; its dive sites page lists the park sites by number and letter; terms PDF covers bookings and media only, bare copyright line"
     }
   },
   "cite_only": {
@@ -139,7 +147,10 @@
     "underwaterphotography.com": "user-submitted dive site directory; read only",
     "waypoints.ph": "directory of dive sites; no terms, a bare copyright line",
     "yachtway.com": "aggregator of map points; terms silent, no dive coordinates",
-    "zentacle.com": "directory of user-entered sites; terms forbid copying and scraping"
+    "zentacle.com": "directory of user-entered sites; terms forbid copying and scraping",
+    "harpsguidetobonaire.com": "a family's compiled Bonaire guide; its dive site table mixes coordinate formats and several figures are plainly wrong (other islands, the Netherlands), so it reads as a compilation; no terms found",
+    "duikersgids.nl": "subscription dive spot directory with user logbook entries; directory, never confirms anything",
+    "infobonaire.com": "tourism directory and guide to Bonaire; compilation, never confirms anything"
   },
   "never": {
     "atlantishotel.com": "liveaboard operator (Atlantis Azores/Adventurer); its legal page forbids copying or reproducing any website material without written consent",
@@ -154,6 +165,8 @@
     "wannadive.net": "all rights reserved",
     "whittlespublishing.com": "guidebook (Wrecks and Reefs of South East Scotland) sample PDF",
     "wikivoyage.org": "CC BY-SA, cannot join an ODbL database",
-    "wrecksite.eu": "proprietary"
+    "wrecksite.eu": "proprietary",
+    "bonaireisland.com": "Tourism Corporation Bonaire; terms reserve all rights, allow personal use only and forbid copying or redistribution for commercial purposes without written permission",
+    "frankosmaps.com": "map publisher (Franko's Bonaire dive map); a chart's set of positions, the map that operator brochures reprint with permission"
   }
 }

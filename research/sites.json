@@ -5447,6 +5447,898 @@
         "date": "2026-11-16"
       },
       "withdrawn": null
+    },
+    {
+      "id": "research_bq_rappel",
+      "name": "Rappel",
+      "area": "Bonaire",
+      "country_code": "BQ",
+      "named": {
+        "place": "Leeward north-west coast of Bonaire between Karpata and Kralendijk",
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          },
+          {
+            "url": "https://beyondthecorals.com/bonaire/dive-sites/",
+            "read": "2026-11-18"
+          }
+        ],
+        "osm": "relation/4266671"
+      },
+      "position": {
+        "lat": 12.21707,
+        "lon": -68.3442,
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18",
+            "lat": 12.21707,
+            "lon": -68.3442,
+            "method": "map",
+            "map": "https://stinapabonaire.org/wp-content/uploads/2026/04/STINAPA-BNMP-folder-pag.2-scaled.jpg"
+          }
+        ]
+      },
+      "entry": {
+        "value": [
+          "boat"
+        ],
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          }
+        ]
+      },
+      "note": "Map reading. The STINAPA marine park folder map (2025, page 2) numbers the boat moorings along the coast as site 11. The drawn coast is schematic, so the point is read between the two numbered markers whose sites OpenStreetMap holds: site 10 La Dania's Leap (node/663869441, 12.218142, -68.348148) and site 13 Boka di Tolo (Tolo) (node/663869427, 12.215236, -68.337439). Marker 11 lies 0.37 of the way along the marker path from 10 to 13 (pixel centre 785, 788 in the 1821 by 2560 image; 1209 m over 72 px, about 17 m per px), and the point is that fraction of the straight line between the two OSM points. The map spaces its markers evenly, so the point may be off by a few hundred metres along the coast; it is 446 m from site 10 and 763 m from site 13. The point is in water, 59 m seaward of the OSM coastline. Entry from the map's site table (access by boat only). Beyond the Corals lists the site by name and number in the same order.",
+      "review": {
+        "state": "approved",
+        "date": "2026-11-18",
+        "by": "maintainer"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "way/1571423645"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "relation/4266671"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-18",
+        "agrees": true,
+        "facts": "6597b57e6ad730396fc09b352a30ef87b1cd8459908f004b0e6281d481ab3172"
+      }
+    },
+    {
+      "id": "research_bq_kallis_reef",
+      "name": "Kalli's Reef",
+      "area": "Bonaire",
+      "country_code": "BQ",
+      "named": {
+        "place": "Leeward north-west coast of Bonaire between Karpata and Kralendijk",
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          },
+          {
+            "url": "https://beyondthecorals.com/bonaire/dive-sites/",
+            "read": "2026-11-18"
+          }
+        ],
+        "osm": "relation/4266671"
+      },
+      "position": {
+        "lat": 12.20252,
+        "lon": -68.31132,
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18",
+            "lat": 12.20252,
+            "lon": -68.31132,
+            "method": "map",
+            "map": "https://stinapabonaire.org/wp-content/uploads/2026/04/STINAPA-BNMP-folder-pag.2-scaled.jpg"
+          }
+        ]
+      },
+      "entry": {
+        "value": [
+          "boat",
+          "shore"
+        ],
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          }
+        ]
+      },
+      "note": "Map reading. The STINAPA marine park folder map (2025, page 2) numbers the boat moorings along the coast as site 19. The drawn coast is schematic, so the point is read between the two numbered markers whose sites OpenStreetMap holds: site 18 Jeff Davis Memorial (node/636400684, 12.204958, -68.314055) and site 20 Oil Slick Leap (node/663869425, 12.20013, -68.308628). Marker 19 lies 0.50 of the way along the marker path from 18 to 20 (pixel centre 951, 872 in the 1821 by 2560 image; 796 m over 44 px, about 18 m per px), and the point is that fraction of the straight line between the two OSM points. The map spaces its markers evenly, so the point may be off by a few hundred metres along the coast; it is 402 m from site 18 and 395 m from site 20. The point is in water, 27 m seaward of the OSM coastline. Entry from the map's site table (access by boat and by land). Beyond the Corals lists the site by name and number in the same order.",
+      "review": {
+        "state": "approved",
+        "date": "2026-11-18",
+        "by": "maintainer"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "way/1571423645"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "relation/4266671"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-18",
+        "agrees": true,
+        "facts": "212c6640d8c376e1926a1f7973dbd8014805a6a09ec82343f99e8bbab03bd82f"
+      }
+    },
+    {
+      "id": "research_bq_barkadera",
+      "name": "Barkadera",
+      "area": "Bonaire",
+      "country_code": "BQ",
+      "named": {
+        "place": "Leeward north-west coast of Bonaire between Karpata and Kralendijk",
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          },
+          {
+            "url": "https://beyondthecorals.com/bonaire/dive-sites/",
+            "read": "2026-11-18"
+          }
+        ],
+        "osm": "relation/4266671"
+      },
+      "position": {
+        "lat": 12.1954,
+        "lon": -68.3028,
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18",
+            "lat": 12.1954,
+            "lon": -68.3028,
+            "method": "map",
+            "map": "https://stinapabonaire.org/wp-content/uploads/2026/04/STINAPA-BNMP-folder-pag.2-scaled.jpg"
+          }
+        ]
+      },
+      "entry": {
+        "value": [
+          "boat"
+        ],
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          }
+        ]
+      },
+      "note": "Map reading. The STINAPA marine park folder map (2025, page 2) numbers the boat moorings along the coast as site 21. The drawn coast is schematic, so the point is read between the two numbered markers whose sites OpenStreetMap holds: site 20 Oil Slick Leap (node/663869425, 12.20013, -68.308628) and site 22 Andrea II (node/636400643, 12.191361, -68.29782). Marker 21 lies 0.54 of the way along the marker path from 20 to 22 (pixel centre 987, 905 in the 1821 by 2560 image; 1524 m over 51 px, about 30 m per px), and the point is that fraction of the straight line between the two OSM points. The map spaces its markers evenly, so the point may be off by a few hundred metres along the coast; it is 822 m from site 20 and 702 m from site 22. The point is in water, 143 m seaward of the OSM coastline. Entry from the map's site table (access by boat only). Beyond the Corals lists the site by name and number in the same order.",
+      "review": {
+        "state": "approved",
+        "date": "2026-11-18",
+        "by": "maintainer"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "way/316441168"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "relation/4266671"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-18",
+        "agrees": true,
+        "facts": "2ffe494cdd23c9185a27f68a131c5ced15576248aac00d5b75dc9d8ba1c26e89"
+      }
+    },
+    {
+      "id": "research_bq_ebos_reef",
+      "name": "Ebo's Reef",
+      "area": "Bonaire",
+      "country_code": "BQ",
+      "named": {
+        "place": "Klein Bonaire, the islet off Kralendijk",
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          },
+          {
+            "url": "https://beyondthecorals.com/bonaire/dive-sites/",
+            "read": "2026-11-18"
+          }
+        ],
+        "osm": "relation/5176051"
+      },
+      "position": {
+        "lat": 12.16663,
+        "lon": -68.29516,
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18",
+            "lat": 12.16663,
+            "lon": -68.29516,
+            "method": "map",
+            "map": "https://stinapabonaire.org/wp-content/uploads/2026/04/STINAPA-BNMP-folder-pag.2-scaled.jpg"
+          }
+        ]
+      },
+      "entry": {
+        "value": [
+          "boat"
+        ],
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          }
+        ]
+      },
+      "note": "Map reading. The STINAPA marine park folder map (2025, page 2) draws Klein Bonaire with its 26 lettered boat moorings; this is marker B (pixel centre 1059, 1067 in the 1821 by 2560 image). The drawn island was matched to the OpenStreetMap coastline of Klein Bonaire (ways 12195427 and 317792829) by its four extreme points: west 12.15227, -68.32899; north 12.16849, -68.30691; east 12.15707, -68.29281; south 12.14595, -68.30595. A least squares affine fit gives about 18 m per px east to west and 17 m per px north to south, with 43 to 84 m residuals at those points; two further landmarks check it: the pond in the west lobe (way 356999295) at 51 m and Tanki Kalbas (way 317861673) at 97 m. The drawn lighthouse is about 840 m off and was not used. The point is in water about 322 m off the OSM coast. The map spaces its markers evenly around a schematic island, so the point may be off by a few hundred metres along the coast. Entry from the map's Klein Bonaire table (boat). Beyond the Corals lists the site under Klein Bonaire with the same letter.",
+      "review": {
+        "state": "approved",
+        "date": "2026-11-18",
+        "by": "maintainer"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "way/317792829"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "relation/5176051"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-18",
+        "agrees": true,
+        "facts": "ec5cc6865ca55b060756eb8a060a1ca5c8a8b4eb4810b60b577f020756da1b70"
+      }
+    },
+    {
+      "id": "research_bq_nearest_point",
+      "name": "Nearest Point",
+      "area": "Bonaire",
+      "country_code": "BQ",
+      "named": {
+        "place": "Klein Bonaire, the islet off Kralendijk",
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          },
+          {
+            "url": "https://beyondthecorals.com/bonaire/dive-sites/",
+            "read": "2026-11-18"
+          }
+        ],
+        "osm": "relation/5176051"
+      },
+      "position": {
+        "lat": 12.14886,
+        "lon": -68.2951,
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18",
+            "lat": 12.14886,
+            "lon": -68.2951,
+            "method": "map",
+            "map": "https://stinapabonaire.org/wp-content/uploads/2026/04/STINAPA-BNMP-folder-pag.2-scaled.jpg"
+          }
+        ]
+      },
+      "entry": {
+        "value": [
+          "boat"
+        ],
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          }
+        ]
+      },
+      "note": "Map reading. The STINAPA marine park folder map (2025, page 2) draws Klein Bonaire with its 26 lettered boat moorings; this is marker E (pixel centre 1070, 1180 in the 1821 by 2560 image). The drawn island was matched to the OpenStreetMap coastline of Klein Bonaire (ways 12195427 and 317792829) by its four extreme points: west 12.15227, -68.32899; north 12.16849, -68.30691; east 12.15707, -68.29281; south 12.14595, -68.30595. A least squares affine fit gives about 18 m per px east to west and 17 m per px north to south, with 43 to 84 m residuals at those points; two further landmarks check it: the pond in the west lobe (way 356999295) at 51 m and Tanki Kalbas (way 317861673) at 97 m. The drawn lighthouse is about 840 m off and was not used. The point is in water about 142 m off the OSM coast. The map spaces its markers evenly around a schematic island, so the point may be off by a few hundred metres along the coast. Entry from the map's Klein Bonaire table (boat). Beyond the Corals lists the site under Klein Bonaire with the same letter.",
+      "review": {
+        "state": "approved",
+        "date": "2026-11-18",
+        "by": "maintainer"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "way/317792829"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "relation/5176051"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-18",
+        "agrees": true,
+        "facts": "3c01be5a40bbb47d9a2d1abf6b2effb05a5c1d4d4bdd3165b2f3f81bcf833564"
+      }
+    },
+    {
+      "id": "research_bq_montes_divi_tree",
+      "name": "Monte's Divi Tree",
+      "area": "Bonaire",
+      "country_code": "BQ",
+      "named": {
+        "place": "Klein Bonaire, the islet off Kralendijk",
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          },
+          {
+            "url": "https://beyondthecorals.com/bonaire/dive-sites/",
+            "read": "2026-11-18"
+          }
+        ],
+        "osm": "relation/5176051"
+      },
+      "position": {
+        "lat": 12.14529,
+        "lon": -68.30596,
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18",
+            "lat": 12.14529,
+            "lon": -68.30596,
+            "method": "map",
+            "map": "https://stinapabonaire.org/wp-content/uploads/2026/04/STINAPA-BNMP-folder-pag.2-scaled.jpg"
+          }
+        ]
+      },
+      "entry": {
+        "value": [
+          "boat"
+        ],
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          }
+        ]
+      },
+      "note": "Map reading. The STINAPA marine park folder map (2025, page 2) draws Klein Bonaire with its 26 lettered boat moorings; this is marker H (pixel centre 1006, 1204 in the 1821 by 2560 image). The drawn island was matched to the OpenStreetMap coastline of Klein Bonaire (ways 12195427 and 317792829) by its four extreme points: west 12.15227, -68.32899; north 12.16849, -68.30691; east 12.15707, -68.29281; south 12.14595, -68.30595. A least squares affine fit gives about 18 m per px east to west and 17 m per px north to south, with 43 to 84 m residuals at those points; two further landmarks check it: the pond in the west lobe (way 356999295) at 51 m and Tanki Kalbas (way 317861673) at 97 m. The drawn lighthouse is about 840 m off and was not used. The point is in water about 72 m off the OSM coast. The map spaces its markers evenly around a schematic island, so the point may be off by a few hundred metres along the coast. Entry from the map's Klein Bonaire table (boat). Beyond the Corals lists the site under Klein Bonaire with the same letter.",
+      "review": {
+        "state": "approved",
+        "date": "2026-11-18",
+        "by": "maintainer"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "way/317792829"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "relation/5176051"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-18",
+        "agrees": true,
+        "facts": "2b7e5a99e34ad30bd45cda847acb8213e9e42aa6b381378cce69f368a75a2d0b"
+      }
+    },
+    {
+      "id": "research_bq_captain_dons_reef",
+      "name": "Captain Don's Reef",
+      "area": "Bonaire",
+      "country_code": "BQ",
+      "named": {
+        "place": "Klein Bonaire, the islet off Kralendijk",
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          },
+          {
+            "url": "https://beyondthecorals.com/bonaire/dive-sites/",
+            "read": "2026-11-18"
+          }
+        ],
+        "osm": "relation/5176051"
+      },
+      "position": {
+        "lat": 12.14838,
+        "lon": -68.31606,
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18",
+            "lat": 12.14838,
+            "lon": -68.31606,
+            "method": "map",
+            "map": "https://stinapabonaire.org/wp-content/uploads/2026/04/STINAPA-BNMP-folder-pag.2-scaled.jpg"
+          }
+        ]
+      },
+      "entry": {
+        "value": [
+          "boat"
+        ],
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          }
+        ]
+      },
+      "note": "Map reading. The STINAPA marine park folder map (2025, page 2) draws Klein Bonaire with its 26 lettered boat moorings; this is marker K (pixel centre 944, 1184 in the 1821 by 2560 image). The drawn island was matched to the OpenStreetMap coastline of Klein Bonaire (ways 12195427 and 317792829) by its four extreme points: west 12.15227, -68.32899; north 12.16849, -68.30691; east 12.15707, -68.29281; south 12.14595, -68.30595. A least squares affine fit gives about 18 m per px east to west and 17 m per px north to south, with 43 to 84 m residuals at those points; two further landmarks check it: the pond in the west lobe (way 356999295) at 51 m and Tanki Kalbas (way 317861673) at 97 m. The drawn lighthouse is about 840 m off and was not used. The point is in water about 232 m off the OSM coast. The map spaces its markers evenly around a schematic island, so the point may be off by a few hundred metres along the coast. Entry from the map's Klein Bonaire table (boat). Beyond the Corals lists the site under Klein Bonaire with the same letter.",
+      "review": {
+        "state": "approved",
+        "date": "2026-11-18",
+        "by": "maintainer"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "way/12195427"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "relation/5176051"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-18",
+        "agrees": true,
+        "facts": "7ecdc99cb1df10ddf976f9070a9bc31685a023a43ebbc6cb553237b14360d997"
+      }
+    },
+    {
+      "id": "research_bq_forest",
+      "name": "Forest",
+      "area": "Bonaire",
+      "country_code": "BQ",
+      "named": {
+        "place": "Klein Bonaire, the islet off Kralendijk",
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          },
+          {
+            "url": "https://beyondthecorals.com/bonaire/dive-sites/",
+            "read": "2026-11-18"
+          }
+        ],
+        "osm": "relation/5176051"
+      },
+      "position": {
+        "lat": 12.14839,
+        "lon": -68.32924,
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18",
+            "lat": 12.14839,
+            "lon": -68.32924,
+            "method": "map",
+            "map": "https://stinapabonaire.org/wp-content/uploads/2026/04/STINAPA-BNMP-folder-pag.2-scaled.jpg"
+          }
+        ]
+      },
+      "entry": {
+        "value": [
+          "boat"
+        ],
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          }
+        ]
+      },
+      "note": "Map reading. The STINAPA marine park folder map (2025, page 2) draws Klein Bonaire with its 26 lettered boat moorings; this is marker N (pixel centre 864, 1185 in the 1821 by 2560 image). The drawn island was matched to the OpenStreetMap coastline of Klein Bonaire (ways 12195427 and 317792829) by its four extreme points: west 12.15227, -68.32899; north 12.16849, -68.30691; east 12.15707, -68.29281; south 12.14595, -68.30595. A least squares affine fit gives about 18 m per px east to west and 17 m per px north to south, with 43 to 84 m residuals at those points; two further landmarks check it: the pond in the west lobe (way 356999295) at 51 m and Tanki Kalbas (way 317861673) at 97 m. The drawn lighthouse is about 840 m off and was not used. The point is in water about 131 m off the OSM coast. The map spaces its markers evenly around a schematic island, so the point may be off by a few hundred metres along the coast. Entry from the map's Klein Bonaire table (boat). Beyond the Corals lists the site under Klein Bonaire with the same letter.",
+      "review": {
+        "state": "approved",
+        "date": "2026-11-18",
+        "by": "maintainer"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "way/12195427"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "relation/5176051"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-18",
+        "agrees": true,
+        "facts": "3096e1480fc646ccfe9680d164bb1b4d84ecc77c0128fde5b3df908b4e48c22e"
+      }
+    },
+    {
+      "id": "research_bq_southwest_corner",
+      "name": "Southwest Corner",
+      "area": "Bonaire",
+      "country_code": "BQ",
+      "named": {
+        "place": "Klein Bonaire, the islet off Kralendijk",
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          },
+          {
+            "url": "https://beyondthecorals.com/bonaire/dive-sites/",
+            "read": "2026-11-18"
+          }
+        ],
+        "osm": "relation/5176051"
+      },
+      "position": {
+        "lat": 12.15107,
+        "lon": -68.33118,
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18",
+            "lat": 12.15107,
+            "lon": -68.33118,
+            "method": "map",
+            "map": "https://stinapabonaire.org/wp-content/uploads/2026/04/STINAPA-BNMP-folder-pag.2-scaled.jpg"
+          }
+        ]
+      },
+      "entry": {
+        "value": [
+          "boat"
+        ],
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          }
+        ]
+      },
+      "note": "Map reading. The STINAPA marine park folder map (2025, page 2) draws Klein Bonaire with its 26 lettered boat moorings; this is marker O (pixel centre 851, 1168 in the 1821 by 2560 image). The drawn island was matched to the OpenStreetMap coastline of Klein Bonaire (ways 12195427 and 317792829) by its four extreme points: west 12.15227, -68.32899; north 12.16849, -68.30691; east 12.15707, -68.29281; south 12.14595, -68.30595. A least squares affine fit gives about 18 m per px east to west and 17 m per px north to south, with 43 to 84 m residuals at those points; two further landmarks check it: the pond in the west lobe (way 356999295) at 51 m and Tanki Kalbas (way 317861673) at 97 m. The drawn lighthouse is about 840 m off and was not used. The point is in water about 250 m off the OSM coast. The map spaces its markers evenly around a schematic island, so the point may be off by a few hundred metres along the coast. Entry from the map's Klein Bonaire table (boat). Beyond the Corals lists the site under Klein Bonaire with the same letter.",
+      "review": {
+        "state": "approved",
+        "date": "2026-11-18",
+        "by": "maintainer"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "way/12195427"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "relation/5176051"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-18",
+        "agrees": true,
+        "facts": "48d54572d4e18ea529cae6260079b2a482446d64d9bdd2f86a78cb278f69367b"
+      }
+    },
+    {
+      "id": "research_bq_munks_haven",
+      "name": "Munk's Haven",
+      "area": "Bonaire",
+      "country_code": "BQ",
+      "named": {
+        "place": "Klein Bonaire, the islet off Kralendijk",
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          },
+          {
+            "url": "https://beyondthecorals.com/bonaire/dive-sites/",
+            "read": "2026-11-18"
+          }
+        ],
+        "osm": "relation/5176051"
+      },
+      "position": {
+        "lat": 12.15397,
+        "lon": -68.3314,
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18",
+            "lat": 12.15397,
+            "lon": -68.3314,
+            "method": "map",
+            "map": "https://stinapabonaire.org/wp-content/uploads/2026/04/STINAPA-BNMP-folder-pag.2-scaled.jpg"
+          }
+        ]
+      },
+      "entry": {
+        "value": [
+          "boat"
+        ],
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          }
+        ]
+      },
+      "note": "Map reading. The STINAPA marine park folder map (2025, page 2) draws Klein Bonaire with its 26 lettered boat moorings; this is marker P (pixel centre 848, 1150 in the 1821 by 2560 image). The drawn island was matched to the OpenStreetMap coastline of Klein Bonaire (ways 12195427 and 317792829) by its four extreme points: west 12.15227, -68.32899; north 12.16849, -68.30691; east 12.15707, -68.29281; south 12.14595, -68.30595. A least squares affine fit gives about 18 m per px east to west and 17 m per px north to south, with 43 to 84 m residuals at those points; two further landmarks check it: the pond in the west lobe (way 356999295) at 51 m and Tanki Kalbas (way 317861673) at 97 m. The drawn lighthouse is about 840 m off and was not used. The point is in water about 298 m off the OSM coast. The map spaces its markers evenly around a schematic island, so the point may be off by a few hundred metres along the coast. Entry from the map's Klein Bonaire table (boat). Beyond the Corals lists the site under Klein Bonaire with the same letter.",
+      "review": {
+        "state": "approved",
+        "date": "2026-11-18",
+        "by": "maintainer"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "way/12195427"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "relation/5176051"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-18",
+        "agrees": true,
+        "facts": "b761a34583bbea352fd19c1da372913b0d76aa433803f9d5d14ee64c02b4df2e"
+      }
+    },
+    {
+      "id": "research_bq_sampler",
+      "name": "Sampler",
+      "area": "Bonaire",
+      "country_code": "BQ",
+      "named": {
+        "place": "Klein Bonaire, the islet off Kralendijk",
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          },
+          {
+            "url": "https://beyondthecorals.com/bonaire/dive-sites/",
+            "read": "2026-11-18"
+          }
+        ],
+        "osm": "relation/5176051"
+      },
+      "position": {
+        "lat": 12.17113,
+        "lon": -68.30615,
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18",
+            "lat": 12.17113,
+            "lon": -68.30615,
+            "method": "map",
+            "map": "https://stinapabonaire.org/wp-content/uploads/2026/04/STINAPA-BNMP-folder-pag.2-scaled.jpg"
+          }
+        ]
+      },
+      "entry": {
+        "value": [
+          "boat"
+        ],
+        "sources": [
+          {
+            "url": "https://stinapabonaire.org/bonaire-national-marine-park/",
+            "read": "2026-11-18"
+          }
+        ]
+      },
+      "note": "Map reading. The STINAPA marine park folder map (2025, page 2) draws Klein Bonaire with its 26 lettered boat moorings; this is marker Z (pixel centre 990, 1039 in the 1821 by 2560 image). The drawn island was matched to the OpenStreetMap coastline of Klein Bonaire (ways 12195427 and 317792829) by its four extreme points: west 12.15227, -68.32899; north 12.16849, -68.30691; east 12.15707, -68.29281; south 12.14595, -68.30595. A least squares affine fit gives about 18 m per px east to west and 17 m per px north to south, with 43 to 84 m residuals at those points; two further landmarks check it: the pond in the west lobe (way 356999295) at 51 m and Tanki Kalbas (way 317861673) at 97 m. The drawn lighthouse is about 840 m off and was not used. The point is in water about 296 m off the OSM coast. The map spaces its markers evenly around a schematic island, so the point may be off by a few hundred metres along the coast. Entry from the map's Klein Bonaire table (boat). Beyond the Corals lists the site under Klein Bonaire with the same letter.",
+      "review": {
+        "state": "approved",
+        "date": "2026-11-18",
+        "by": "maintainer"
+      },
+      "withdrawn": null,
+      "checks": [
+        {
+          "name": "in_water",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "way/317792829"
+          ]
+        },
+        {
+          "name": "in_place",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": [
+            "relation/5176051"
+          ]
+        },
+        {
+          "name": "copied_point",
+          "passed": true,
+          "date": "2026-11-18",
+          "osm": []
+        }
+      ],
+      "second_pass": {
+        "date": "2026-11-18",
+        "agrees": true,
+        "facts": "0f2b9be48aaf71bc903f4b29ec3d19a98c93260c318b03f95ee050637a963541"
+      }
     }
   ],
   "withdrawn_curated": []
