@@ -64,6 +64,68 @@ class InWaterTest(unittest.TestCase):
         self.assertFalse(inland.passed)
 
 
+def _ring_answer(nodes, *, start, splits=()):
+    """An Overpass answer holding the closed ring through [nodes] (lat,
+    lon pairs in drawing order), drawn from node [start] and cut into one
+    way per run between the [splits] node indexes, each way sharing its end
+    node with the next as OpenStreetMap coastlines do."""
+    order = [nodes[(start + i) % len(nodes)] for i in range(len(nodes) + 1)]
+    cuts = [0, *sorted(splits), len(nodes)]
+    return {"elements": [{
+        "type": "way", "id": 100 + n, "tags": {"natural": "coastline"},
+        "geometry": [{"lat": lat, "lon": lon} for lat, lon in order[a:b + 1]],
+    } for n, (a, b) in enumerate(zip(cuts, cuts[1:]))]}
+
+
+# A small diamond islet near (0, 0) with a sharp spike to the south, drawn
+# counter-clockwise (land on its left): south spike, east, north, west.
+_ISLET = [(-0.002, 0.0), (0.0, 0.001), (0.002, 0.0), (0.0, -0.001)]
+# About 315 m south east of the spike, in open water. The spike is the
+# nearest coastline point, so the segments into and out of it are equally
+# near; the point is left of the incoming one's line and right of the
+# outgoing one's.
+_OFF_SPIKE = (-0.004, 0.002)
+
+
+class InWaterVertexTest(unittest.TestCase):
+    def test_water_off_a_spike_is_water_whichever_node_the_ring_starts_at(self):
+        for start in range(len(_ISLET)):
+            with self.subTest(start=start):
+                answer = _ring_answer(_ISLET, start=start)
+                result = mc.in_water(*_OFF_SPIKE, shore=False, overpass=_overpass({"coastline": answer}))
+                self.assertTrue(result.passed, result.detail)
+                self.assertIn("seaward", result.detail)
+
+    def test_land_off_a_reflex_vertex_is_land_whichever_node_the_ring_starts_at(self):
+        # The same diamond drawn clockwise is a pond: land lies outside it,
+        # and the spike is a reflex corner of the land.
+        pond = list(reversed(_ISLET))
+        for start in range(len(pond)):
+            with self.subTest(start=start):
+                answer = _ring_answer(pond, start=start)
+                result = mc.in_water(*_OFF_SPIKE, shore=False, overpass=_overpass({"coastline": answer}))
+                self.assertFalse(result.passed, result.detail)
+                self.assertIn("landward", result.detail)
+
+    def test_a_spike_where_two_ways_meet_records_both(self):
+        # Drawn from the west node, the spike is node 1: one way ends there
+        # and the next begins there.
+        answer = _ring_answer(_ISLET, start=3, splits=(1,))
+        result = mc.in_water(*_OFF_SPIKE, shore=False, overpass=_overpass({"coastline": answer}))
+        self.assertTrue(result.passed, result.detail)
+        self.assertEqual(result.osm, ["way/100", "way/101"])
+
+    def test_a_point_off_a_segment_still_takes_that_segment_side(self):
+        # Due east of the islet's east node's south face: the nearest
+        # point is inside one segment, so no vertex rule applies.
+        answer = _ring_answer(_ISLET, start=0)
+        sea = mc.in_water(-0.0015, 0.0025, shore=False, overpass=_overpass({"coastline": answer}))
+        self.assertTrue(sea.passed, sea.detail)
+        self.assertEqual(sea.osm, ["way/100"])
+        land = mc.in_water(-0.0005, 0.0003, shore=False, overpass=_overpass({"coastline": answer}))
+        self.assertFalse(land.passed, land.detail)
+
+
 class InPlaceTest(unittest.TestCase):
     _ISLAND = {"elements": [{
         "type": "way", "id": 96698692,
